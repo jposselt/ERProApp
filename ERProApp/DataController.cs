@@ -23,7 +23,7 @@ namespace ERProApp
         /// <summary>
         /// Pfad + Name der Datei in der Kunden gespeichert werden.
         /// </summary>
-        public static string NoteFile = @"customers.xml";
+        public static string CustomerFile = @"customers.xml";
 
         /// <summary>
         /// Xml-Stammelement für die Serialisierung und Deserialisierung.
@@ -357,6 +357,26 @@ namespace ERProApp
         }
 
         /// <summary>
+        /// Speichert Kunden-, Buch- und Ausleihdaten in den Standarddateien
+        /// </summary>
+        public static void SaveDataToFiles()
+        {
+            SaveRentalsToFile(RentalFile);
+            SaveBooksToFile(BookFile);
+            SaveCustomersToFile(CustomerFile);
+        }
+
+        /// <summary>
+        /// Lädt Kunden-, Buch- und Ausleihdaten aus den Standarddateien
+        /// </summary>
+        public static void LoadDataFromFiles()
+        {
+            LoadCustomersFromFile(CustomerFile);
+            LoadBooksFromFile(BookFile);
+            LoadRentalsFromFile(RentalFile);
+        }
+
+        /// <summary>
         /// Prüft für ein bestimmtes Ausleihobjekt ob zeitliche Überlappungen mit aktiven Ausleihen/Reservierungen gibt
         /// </summary>
         /// <param name="item"></param>Ausleihobjekt 
@@ -383,6 +403,14 @@ namespace ERProApp
                 }
             }
             return overlap;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void OverdueCheck()
+        {
+
         }
 
         #endregion // Funktionen

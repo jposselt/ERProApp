@@ -10,7 +10,7 @@ namespace ERProApp
     /// <summary>
     /// Klasse zur Modelierung von Büchern
     /// </summary>
-    class Book : IComparable
+    public class Book : IComparable
     {
         #region Membervariablen
 

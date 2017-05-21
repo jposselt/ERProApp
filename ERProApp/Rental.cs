@@ -10,8 +10,12 @@ namespace ERProApp
     /// <summary>
     /// Klasse zur Modelierung Ausleihen und Reservierungen
     /// </summary>
-    class Rental
+    public class Rental
     {
+        #region Klassenvariablen
+        private DateTime defaultDate = new DateTime(1970, 1, 1);
+        #endregion // Klassenvariablen
+
         #region Membervariablen
 
         // Diese Variablen werden Serialisiert
@@ -25,7 +29,7 @@ namespace ERProApp
 
         // Diese Variablen werden nicht Serialisiert
         private Customer _customer;
-        private Book _book;
+        private Book _item;
 
         #endregion // Membervariablen
 
@@ -117,17 +121,63 @@ namespace ERProApp
         [XmlIgnore] // Bei der Serialisierung und Deserialisierung ignorieren
         public Book Item
         {
-            get { return _book; }
-            set { _book = value; }
+            get { return _item; }
+            set { _item = value; }
         }
 
         #endregion // Properties (Eigenschaften)
 
         #region Konstruktoren
 
+        /// <summary>
+        /// Standardkonstruktor
+        /// </summary>
+        public Rental(){}
+
+        /// <summary>
+        /// Konstruktor für neue Ausleihe
+        /// </summary>
+        /// <param name="customer"></param>Der ausleihende Kunde
+        /// <param name="item"></param>Das auszuleihende Objekt
+        /// <param name="start"></param>Startdatum der Ausleihe
+        /// <param name="end"></param>Enddatum der Ausleihe
+        /// <param name="reservation"></param>
         public Rental(Customer customer, Book item, DateTime start, DateTime end, bool reservation)
         {
-            // TODO
+            _id = Guid.NewGuid().ToString();
+
+            _customer = customer;
+            if (customer == null)
+                _customerID = "";
+            else
+                _customerID = customer.ID;
+
+            _item = item;
+            if (item == null)
+                _itemID = "";
+            else
+                _itemID = item.ID;
+
+            if (start == null)
+                _startDate = defaultDate;
+            else
+                _startDate = start;
+
+            if (end == null)
+                _endDate = defaultDate;
+            else
+                _endDate = start;
+
+            // Vertausche Start/Enddatum, wenn Enddatum vor Startdatum
+            if (_endDate < _startDate)
+            {
+                DateTime tmp = _endDate;
+                _endDate = _startDate;
+                _startDate = tmp;
+            }
+
+            _reservation = reservation;
+            _overdue = false;
         }
 
         #endregion // Konstruktoren
