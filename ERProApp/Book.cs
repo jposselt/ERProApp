@@ -19,6 +19,7 @@ namespace ERProApp
         private String _author;
         private String _genre;
         private String _location;
+        private String _status;
         private int _year;
         private bool _blocked;
 
@@ -74,6 +75,16 @@ namespace ERProApp
         {
             get { return _location; }
             set { _location = value; }
+        }
+
+        /// <summary>
+        /// Ruft den Status ab oder legt diese fest.
+        /// </summary>
+        [XmlElement("Status")] // Wird für die Serialisierung und Deserialisierung benötigt.
+        public String Status
+        {
+            get { return _status; }
+            set { _status = value; }
         }
 
         /// <summary>
