@@ -356,10 +356,33 @@ namespace ERProApp
             }
         }
 
-        public static bool ConsistencyCheck(Book item, DateTime start, DateTime end)
+        /// <summary>
+        /// Prüft für ein bestimmtes Ausleihobjekt ob zeitliche Überlappungen mit aktiven Ausleihen/Reservierungen gibt
+        /// </summary>
+        /// <param name="item"></param>Ausleihobjekt 
+        /// <param name="start"></param>Anfang des Zeitintervalls
+        /// <param name="end"></param>Ende des Zeitintervalls
+        /// <returns></returns>
+        public static bool TimeOverlapCheck(Book item, DateTime start, DateTime end)
         {
-            // TODO
-            return true; // Dummy
+            if (start <= end)
+                return false;
+
+            // Hilfsvariable
+            bool overlap = false;
+
+            // Prüfe Ausleihen auf Zeitüberlappung
+            foreach (var rental in Rentals)
+            {
+                if(rental.Item == item)
+                {
+                    if ( !(rental.StartDate > end || rental.EndDate < start) )
+                    {
+                        overlap = true;
+                    }
+                }
+            }
+            return overlap;
         }
 
         #endregion // Funktionen
