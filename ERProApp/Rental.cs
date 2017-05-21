@@ -21,6 +21,7 @@ namespace ERProApp
         private DateTime _startDate;
         private DateTime _endDate;
         private bool _reservation;
+        private bool _overdue;
 
         // Diese Variablen werden nicht Serialisiert
         private Customer _customer;
@@ -88,6 +89,16 @@ namespace ERProApp
         {
             get { return _reservation; }
             set { _reservation = value; }
+        }
+
+        /// <summary>
+        /// Ruft ab oder legt fest ob die Ausleihe/Reservierung überfällig ist.
+        /// </summary>
+        [XmlElement("Overdue")] // Wird für die Serialisierung und Deserialisierung benötigt.
+        public bool Overdue
+        {
+            get { return _overdue; }
+            set { _overdue = value; }
         }
 
         /// <summary>
