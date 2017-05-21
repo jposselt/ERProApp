@@ -55,6 +55,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Book.cs" />
+    <Compile Include="DataController.cs" />
     <Compile Include="Rental.cs" />
     <Page Include="ExitMessageBoxView.xaml">
       <SubType>Designer</SubType>

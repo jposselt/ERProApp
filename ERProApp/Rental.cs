@@ -124,6 +124,12 @@ namespace ERProApp
         #endregion // Properties (Eigenschaften)
 
         #region Konstruktoren
+
+        public Rental(Customer customer, Book item, DateTime start, DateTime end, bool reservation)
+        {
+            // TODO
+        }
+
         #endregion // Konstruktoren
 
     }
