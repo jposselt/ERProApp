@@ -8,6 +8,16 @@
         Title="MainWindow" Height="350" Width="525"
         Closing="Window_Closing">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Grid.Column="0"/>
+        <GridSplitter HorizontalAlignment="Right" 
+                  VerticalAlignment="Stretch" 
+                  Grid.Column="1" ResizeBehavior="PreviousAndNext"
+                  Width="5" Background="#FFBCBCBC"/>
+        <Calendar Grid.Column="2"/>
     </Grid>
 </Window>
