@@ -98,7 +98,7 @@ namespace ERProApp
         }
 
         /// <summary>
-        /// Ruft ab oder legt diese fest, ob das Exemplar für Ausleihen zur Verfügung steht.
+        /// Ruft ab oder legt diese fest, ob Ausleihen dieses Exemplar blockiert sind.
         /// true: Ausleihen nicht möglich; false: Ausleihen möglich
         /// </summary>
         [XmlElement("Blocked")] // Wird für die Serialisierung und Deserialisierung benötigt.
