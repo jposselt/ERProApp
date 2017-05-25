@@ -125,6 +125,24 @@ namespace ERProApp
             set { _item = value; }
         }
 
+        /// <summary>
+        /// Ruft das Startdatum als String ab
+        /// </summary>
+        [XmlIgnore] // Bei der Serialisierung und Deserialisierung ignorieren
+        public String StartAsString
+        {
+            get { return _startDate.ToString("yyyy-MM-dd"); }
+        }
+
+        /// <summary>
+        /// Ruft das Enddatum als String ab
+        /// </summary>
+        [XmlIgnore] // Bei der Serialisierung und Deserialisierung ignorieren
+        public String EndAsString
+        {
+            get { return _endDate.ToString("yyyy-MM-dd"); }
+        }
+
         #endregion // Properties (Eigenschaften)
 
         #region Konstruktoren

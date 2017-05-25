@@ -83,6 +83,15 @@ namespace ERProApp
         }
 
         /// <summary>
+        /// Ruft den Vollen Namen des Kunden ab
+        /// </summary>
+        [XmlIgnore] // Bei der Serialisierung und Deserialisierung ignorieren
+        public String FullName
+        {
+            get { return _lastName+", "+_surName; }
+        }
+
+        /// <summary>
         /// Vergleicht Kunden anhand des Namens in der Reihenfolge Nachname, Vorname
         /// </summary>
         public int CompareTo(object obj)
