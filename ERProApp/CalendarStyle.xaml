@@ -37,7 +37,6 @@
                         <primitives:CalendarItem 
                             Name="PART_CalendarItem" 
                             Style="{TemplateBinding CalendarItemStyle}"
-                            Background="{TemplateBinding Background}" 
                             BorderBrush="{TemplateBinding BorderBrush}" 
                             BorderThickness="{TemplateBinding BorderThickness}"                            
                             />
