@@ -150,17 +150,25 @@
             <Setter.Value>
                 <ControlTemplate TargetType="primitives:CalendarItem">
                     <ControlTemplate.Resources>
+                        <local:DayNameConverter x:Key="DayNameConverter"/>
+
                         <!-- Start: Data template for header button -->
                         <DataTemplate x:Key="DayTitleTemplate">
-                            <TextBlock
-                                                FontWeight="Bold" 
-                                                FontFamily="Verdana" 
-                                                FontSize="9.5" 
-                                                Foreground="#FF333333" 
-                                                HorizontalAlignment="Center"
-                                                Text="{Binding}"
-                                                Margin="0,6,0,6"
-                                                VerticalAlignment="Center"/>
+                            <Grid>
+                                <Rectangle 
+                                        Margin="-1" 
+                                        Fill="#FFE3EFFF"
+                                        />
+                                <TextBlock
+                                        FontWeight="Normal" 
+                                        FontFamily="Arial" 
+                                        FontSize="10.5" 
+                                        Foreground="#FF7C93D7" 
+                                        HorizontalAlignment="Center"
+                                        Text="{Binding Converter={StaticResource DayNameConverter}}"
+                                        Margin="0,6,0,6"
+                                        VerticalAlignment="Center"/>
+                            </Grid>
                         </DataTemplate>
                         <!-- End: Data template for header button -->
                     </ControlTemplate.Resources>
