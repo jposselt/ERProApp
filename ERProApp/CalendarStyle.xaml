@@ -16,6 +16,7 @@
     <!--Calendar-->
     <Style TargetType="toolkit:Calendar">
         <Setter Property="CalendarItemStyle" Value="{DynamicResource CalendarItemStyle}"/>
+        <Setter Property="CalendarDayButtonStyle" Value="{DynamicResource CalendarDayButtonStyle}"/>
         <Setter Property="Foreground" Value="#FF333333" />
         <Setter Property="Background" Value="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type toolkit:Calendar}, ResourceId=CalendarBackgroundBrush}}" />
         <Setter Property="BorderBrush">
@@ -332,7 +333,7 @@
     </Style>
 
     <!--CalendarDayButton-->
-    <Style TargetType="primitives:CalendarDayButton">
+    <Style x:Key="CalendarDayButtonStyle" TargetType="primitives:CalendarDayButton">
         <Setter Property="Background" Value="#FFBADDE9"/>
         <Setter Property="MinWidth" Value="5"/>
         <Setter Property="MinHeight" Value="5"/>
@@ -343,6 +344,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="primitives:CalendarDayButton">
                     <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
                         <vsm:VisualStateManager.VisualStateGroups>
                             <vsm:VisualStateGroup x:Name="CommonStates">
                                 <vsm:VisualStateGroup.Transitions>
@@ -373,7 +378,7 @@
                                 <vsm:VisualState x:Name="Unselected" />
                                 <vsm:VisualState x:Name="Selected">
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="SelectedBackground" Storyboard.TargetProperty="Opacity" To=".75" Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="SelectedBackground" Storyboard.TargetProperty="Opacity" To="1" Duration="0" />
                                     </Storyboard>
                                 </vsm:VisualState>
                             </vsm:VisualStateGroup>
@@ -412,6 +417,7 @@
                                 <vsm:VisualState x:Name="Inactive">
                                     <Storyboard>
                                         <ColorAnimation Duration="0" Storyboard.TargetName="selectedText" Storyboard.TargetProperty="Color" To="#FF777777"></ColorAnimation>
+                                        <DoubleAnimation Duration="0" Storyboard.TargetName="InactiveBackground" Storyboard.TargetProperty="Opacity" To="1"></DoubleAnimation>
                                     </Storyboard>
                                 </vsm:VisualState>
                             </vsm:VisualStateGroup>
@@ -422,8 +428,10 @@
                                 <vsm:VisualState x:Name="RegularDay" />
                                 <vsm:VisualState x:Name="Today">
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="TodayBackground" Storyboard.TargetProperty="Opacity" To="1" Duration="0" />
-                                        <ColorAnimation Duration="0" Storyboard.TargetName="selectedText" Storyboard.TargetProperty="Color" To="#FFFFFFFF"></ColorAnimation>
+                                        <ColorAnimation Duration="0" Storyboard.TargetName="StartGradient" Storyboard.TargetProperty="Color" To="#FFF7D275"></ColorAnimation>
+                                        <ColorAnimation Duration="0" Storyboard.TargetName="EndGradient" Storyboard.TargetProperty="Color" To="#FFF3B84B"></ColorAnimation>
+                                        <ColorAnimation Duration="0" Storyboard.TargetName="BorderBrush" Storyboard.TargetProperty="Color" To="#FFF3B84B"></ColorAnimation>
+                                        <DoubleAnimation Duration="0" Storyboard.TargetName="Border" Storyboard.TargetProperty="StrokeThickness" To="2"></DoubleAnimation>
                                     </Storyboard>
                                 </vsm:VisualState>
                             </vsm:VisualStateGroup>
@@ -439,20 +447,34 @@
                                 </vsm:VisualState>
                             </vsm:VisualStateGroup>
                         </vsm:VisualStateManager.VisualStateGroups>
-                        <Rectangle x:Name="TodayBackground" RadiusX="1" RadiusY="1" Opacity="0" Fill="#FFAAAAAA"/>
-                        <Rectangle x:Name="SelectedBackground" RadiusX="1" RadiusY="1" Opacity="0" Fill="{TemplateBinding Background}"/>
-                        <Rectangle x:Name="Background" RadiusX="1" RadiusY="1" Opacity="0" Fill="{TemplateBinding Background}"/>
-                        <ContentPresenter
-                                x:Name="NormalText"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Margin="5,1,5,1">
-                            <TextElement.Foreground>
-                                <SolidColorBrush x:Name="selectedText" Color="#FF333333"/>
-                            </TextElement.Foreground>
-                        </ContentPresenter>
-                        <Path x:Name="Blackout" Opacity="0" Margin="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.5,0.5" Fill="#FF000000" Stretch="Fill" Data="M8.1772461,11.029181 L10.433105,11.029181 L11.700684,12.801641 L12.973633,11.029181 L15.191895,11.029181 L12.844727,13.999395 L15.21875,17.060919 L12.962891,17.060919 L11.673828,15.256231 L10.352539,17.060919 L8.1396484,17.060919 L10.519043,14.042364 z"/>
-                        <Rectangle x:Name="DayButtonFocusVisual" Visibility="Collapsed" IsHitTestVisible="false" RadiusX="1" RadiusY="1" Stroke="#FF45D6FA"/>
+                        <Rectangle x:Name="SelectedBackground" Grid.Row="1" RadiusX="1" RadiusY="1" Opacity="0" Fill="{TemplateBinding Background}"/>
+                        <Rectangle x:Name="Background" Grid.Row="1" RadiusX="1" RadiusY="1" Opacity="0" Fill="{TemplateBinding Background}" />
+                        <Rectangle x:Name="InactiveBackground" Grid.Row="1" RadiusX="1" RadiusY="1" Opacity="0" Fill="#FFA5BFE1"/>
+                        <Border>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop x:Name="StartGradient" Color="#FFDFE8F5" Offset="0"/>
+                                    <GradientStop Color="{Binding ElementName=StartGradient, Path=Color}" Offset="0.5"/>
+                                    <GradientStop x:Name="EndGradient" Color="#FFC9D9ED" Offset="0.5"/>
+                                    <GradientStop Color="{Binding ElementName=EndGradient, Path=Color}" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <ContentPresenter
+                                    x:Name="NormalText"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Margin="5,1,5,1">
+                                <TextElement.Foreground>
+                                    <SolidColorBrush x:Name="selectedText" Color="#FF333333"/>
+                                </TextElement.Foreground>
+                            </ContentPresenter>
+                        </Border>
+                        <Rectangle x:Name="Border" StrokeThickness="0.5" Grid.RowSpan="2" SnapsToDevicePixels="True">
+                            <Rectangle.Stroke>
+                                <SolidColorBrush x:Name="BorderBrush" Color="#FF5D8CC9"/>
+                            </Rectangle.Stroke>
+                        </Rectangle>
+                        <Path x:Name="Blackout" Grid.Row="1" Opacity="0" Margin="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.5,0.5" Fill="#FF000000" Stretch="Fill" Data="M8.1772461,11.029181 L10.433105,11.029181 L11.700684,12.801641 L12.973633,11.029181 L15.191895,11.029181 L12.844727,13.999395 L15.21875,17.060919 L12.962891,17.060919 L11.673828,15.256231 L10.352539,17.060919 L8.1396484,17.060919 L10.519043,14.042364 z"/>
+                        <Rectangle Width="0" x:Name="DayButtonFocusVisual" Grid.Row="1" Visibility="Collapsed" IsHitTestVisible="false" RadiusX="1" RadiusY="1" Stroke="#FF45D6FA"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
