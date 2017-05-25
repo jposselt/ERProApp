@@ -8,12 +8,20 @@
         Title="MainWindow" Height="350" Width="525"
         Closing="Window_Closing">
 
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="CalendarStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-            <Button Margin="10">Butten 1</Button>
-            <Button Margin="10">Butten 2</Button>
-            <Button Margin="10">Butten 3</Button>
-            <Button Margin="10">Butten 4</Button>
+            <Button Margin="10">Button 1</Button>
+            <Button Margin="10">Button 2</Button>
+            <Button Margin="10">Button 3</Button>
+            <Button Margin="10">Button 4</Button>
         </StackPanel>
         <Grid>
             <Grid.ColumnDefinitions>
