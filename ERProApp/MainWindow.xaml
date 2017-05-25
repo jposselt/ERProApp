@@ -7,17 +7,39 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525"
         Closing="Window_Closing">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <DataGrid Grid.Column="0"/>
-        <GridSplitter HorizontalAlignment="Right" 
+
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            <Button Margin="10">Butten 1</Button>
+            <Button Margin="10">Butten 2</Button>
+            <Button Margin="10">Butten 3</Button>
+            <Button Margin="10">Butten 4</Button>
+        </StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Column="0"
+                  DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                  ItemsSource="{Binding Rentals}"
+                  AutoGenerateColumns="False"
+                  SelectionMode="Extended" SelectionUnit="FullRow"
+                  CanUserReorderColumns="True" CanUserResizeColumns="True" 
+                  CanUserResizeRows="False" CanUserSortColumns="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Start" Binding="{Binding StartAsString}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Ende" Binding="{Binding EndAsString}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Kunde" Binding="{Binding Taker.FullName}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Buch" Binding="{Binding Item.Title}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <GridSplitter HorizontalAlignment="Right" 
                   VerticalAlignment="Stretch" 
                   Grid.Column="1" ResizeBehavior="PreviousAndNext"
                   Width="5" Background="#FFBCBCBC"/>
-        <Calendar Grid.Column="2"/>
-    </Grid>
+            <Calendar Grid.Column="2"/>
+        </Grid>
+    </DockPanel>
 </Window>

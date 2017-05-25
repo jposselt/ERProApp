@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 
 
 namespace ERProApp
@@ -14,6 +15,16 @@ namespace ERProApp
         public MainWindow()
         {
             InitializeComponent();
+
+
+        }
+
+        public ObservableCollection<Rental> Rentals
+        {
+            get
+            {
+                return DataController.Rentals;
+            }
         }
 
         // Eventhandler wenn das Fenster geschlossen wird
