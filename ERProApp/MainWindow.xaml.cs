@@ -16,15 +16,7 @@ namespace ERProApp
         {
             InitializeComponent();
 
-
-        }
-
-        public ObservableCollection<Rental> Rentals
-        {
-            get
-            {
-                return DataController.Rentals;
-            }
+            this.DataContext = new ViewController();
         }
 
         // Eventhandler wenn das Fenster geschlossen wird

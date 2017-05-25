@@ -30,9 +30,8 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid Grid.Column="0"
-                  DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
-                  ItemsSource="{Binding Rentals}"
+            <DataGrid Name="RentalData" Grid.Column="0"
+                  ItemsSource="{Binding RentalData}"
                   AutoGenerateColumns="False"
                   SelectionMode="Extended" SelectionUnit="FullRow"
                   CanUserReorderColumns="True" CanUserResizeColumns="True" 
