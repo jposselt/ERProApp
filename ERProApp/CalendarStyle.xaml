@@ -66,11 +66,13 @@
             </vsm:VisualStateManager.VisualStateGroups>
             <Rectangle Fill="#11E5EBF1" Stretch="Fill" Opacity="1"/>
             <Grid>
-                <Path Margin="14,-6,0,0" Height="10" Width="6" VerticalAlignment="Center" HorizontalAlignment="Left" Stretch="Fill" Data="M288.75,232.25 L288.75,240.625 L283,236.625 z">
-                    <Path.Fill>
-                        <SolidColorBrush x:Name="TextColor" Color="#FF333333" />
-                    </Path.Fill>
+                <Ellipse Style="{DynamicResource NavigationEllipseStyle}"/>
+                <Path Margin="4,0,0,0" Height="10" Width="6" VerticalAlignment="Center" HorizontalAlignment="Left" Stretch="Fill" Data="M288.75,232.25 L283,236.625 L288.75,240.625" StrokeThickness="2">
+                    <Path.Stroke>
+                        <SolidColorBrush x:Name="TextColor" Color="#FF406CA6" />
+                    </Path.Stroke>
                 </Path>
+                <Path Margin="4,0,0,0" Height="10" Width="12" VerticalAlignment="Center" HorizontalAlignment="Left" Stretch="Fill" Data="M283,236.625 L297,236.625" Stroke="#FF406CA6" StrokeThickness="2"/>
             </Grid>
         </Grid>
     </ControlTemplate>
@@ -96,11 +98,13 @@
             </vsm:VisualStateManager.VisualStateGroups>
             <Rectangle Fill="#11E5EBF1" Stretch="Fill" Opacity="1"/>
             <Grid>
-                <Path Margin="0,-6,14,0" Height="10" Width="6" VerticalAlignment="Center" HorizontalAlignment="Right" Stretch="Fill" Data="M282.875,231.875 L282.875,240.375 L288.625,236 z">
-                    <Path.Fill>
-                        <SolidColorBrush x:Name="TextColor" Color="#FF333333" />
-                    </Path.Fill>
+                <Ellipse Style="{DynamicResource NavigationEllipseStyle}"/>
+                <Path Margin="0,0,4,0" Height="10" Width="6" VerticalAlignment="Center" HorizontalAlignment="Right" Stretch="Fill" Data="M283,232.25 L288.75,236.625 L283,240.625" StrokeThickness="2">
+                    <Path.Stroke>
+                        <SolidColorBrush x:Name="TextColor" Color="#FF406CA6" />
+                    </Path.Stroke>
                 </Path>
+                <Path Margin="4,0,0,0" Height="10" Width="12" VerticalAlignment="Center" HorizontalAlignment="Left" Stretch="Fill" Data="M283,236.625 L297,236.625" Stroke="#FF406CA6" StrokeThickness="2"/>
             </Grid>
         </Grid>
     </ControlTemplate>
@@ -193,32 +197,53 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
 
+                                    <Grid.Resources>
+                                        <Style x:Key="NavigationEllipseStyle" TargetType="{x:Type Ellipse}">
+                                            <Setter Property="Width" Value="20"/>
+                                            <Setter Property="Height" Value="20"/>
+                                            <Setter Property="Stroke" Value="#FF8EB0DC"/>
+                                            <Setter Property="StrokeThickness" Value="1"/>
+                                            <Setter Property="Fill">
+                                                <Setter.Value>
+                                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                                        <GradientStop Color="#FFFAFCFF" Offset="0"/>
+                                                        <GradientStop Color="#FFFAFCFF" Offset="0.5"/>
+                                                        <GradientStop Color="#FFCCE2FF" Offset="0.5"/>
+                                                        <GradientStop Color="#FFCCE2FF" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </Grid.Resources>
+
                                     <!-- Start: Previous button content -->
                                     <Button x:Name="PART_PreviousButton" 
+                                            Margin="4"
                                             Grid.Row="0" Grid.Column="0"
                                             Template="{StaticResource PreviousButtonTemplate}" 
-                                            Height="20" Width="28" 
+                                            Height="20" Width="20" 
                                             HorizontalAlignment="Left" 
                                             Focusable="False"
                                             />
                                     <!-- End: Previous button content -->
 
                                     <!-- Start: Header button content -->
-                                    <Button x:Name="PART_HeaderButton"                                             
-                                            Grid.Row="0" Grid.Column="1" 
+                                    <Button x:Name="PART_HeaderButton" 
+                                            Grid.Row="0" Grid.Column="2" 
                                             Template="{StaticResource HeaderButtonTemplate}" 
                                             HorizontalAlignment="Center" VerticalAlignment="Center" 
-                                            FontWeight="Bold" FontSize="10.5" 
+                                            FontWeight="Normal" FontSize="20" 
                                             Focusable="False"
                                             />
                                     <!-- End: Header button content -->
 
                                     <!-- Start: Next button content -->
                                     <Button x:Name="PART_NextButton" 
-                                            Grid.Row="0" Grid.Column="2" 
-                                            Height="20" Width="28" 
-                                            HorizontalAlignment="Right" 
+                                            Margin="4"
+                                            Grid.Row="0" Grid.Column="1" 
                                             Template="{StaticResource NextButtonTemplate}" 
+                                            Height="20" Width="20" 
+                                            HorizontalAlignment="Left" 
                                             Focusable="False"
                                             />
                                     <!-- End: Next button content -->
