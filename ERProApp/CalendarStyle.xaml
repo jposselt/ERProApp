@@ -31,7 +31,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="toolkit:Calendar">
-                    <StackPanel Name="PART_Root" HorizontalAlignment="Center">
+                    <Grid Name="PART_Root">
                         <primitives:CalendarItem 
                             Name="PART_CalendarItem" 
                             Style="{TemplateBinding CalendarItemStyle}"
@@ -39,7 +39,7 @@
                             BorderBrush="{TemplateBinding BorderBrush}" 
                             BorderThickness="{TemplateBinding BorderThickness}"                            
                             />
-                    </StackPanel>
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -139,7 +139,7 @@
     <!-- End: Header button template -->
 
     <!--CalendarItem-->
-    <Style TargetType="primitives:CalendarItem">
+    <Style x:Key="CalendarItemStyle" TargetType="primitives:CalendarItem">
         <Setter Property="Margin" Value="0,3,0,3" />
         <Setter Property="Template">
             <Setter.Value>
@@ -189,6 +189,7 @@
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
 
                                     <!-- Start: Previous button content -->
@@ -222,7 +223,7 @@
                                     <!-- End: Next button content -->
 
                                     <!-- Start: Month Content Grid -->
-                                    <Grid x:Name="PART_MonthView" Grid.Row="1" Grid.ColumnSpan="3" Visibility="Visible" Margin="6,-1,6,6">
+                                    <Grid x:Name="PART_MonthView" Grid.Row="1" Grid.ColumnSpan="4" Visibility="Visible" Margin="6,-1,6,6">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>
                                             <RowDefinition Height="Auto"/>
