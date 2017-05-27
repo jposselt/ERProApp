@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Customers>
+  <Customer ID="7602d3d1-a2f7-4fff-8330-4d3bda2729fa">
+    <Surname>Tim</Surname>
+    <Lastname>Fuerst</Lastname>
+    <City>Halle</City>
+    <Street>Messedamm 65</Street>
+    <ZIP>6044</ZIP>
+  </Customer>
+  <Customer ID="63777124-864b-4138-b51f-42c92bce776d">
+    <Surname>Sophie</Surname>
+    <Lastname>Waechter</Lastname>
+    <City>Berlin Charlottenburg</City>
+    <Street>Leopoldstraße 62</Street>
+    <ZIP>10787</ZIP>
+  </Customer>
+  <Customer ID="dd60e57f-296b-40c0-86f7-d619998d1b41">
+    <Surname>Eric</Surname>
+    <Lastname>Gaertner</Lastname>
+    <City>Rostock</City>
+    <Street>Kurfürstendamm 43</Street>
+    <ZIP>18073</ZIP>
+  </Customer>
+  <Customer ID="abbcbd1e-9c77-4ace-9c8a-2a5bd3726d47">
+    <Surname>Ursula</Surname>
+    <Lastname>Wirtz</Lastname>
+    <City>Kaiserslautern Erfenbach</City>
+    <Street>Bayreuther Strasse 84</Street>
+    <ZIP>67659</ZIP>
+  </Customer>
+  <Customer ID="ee5b251b-39cb-487f-b245-b0125f33bad4">
+    <Surname>Kerstin</Surname>
+    <Lastname>Eberhart</Lastname>
+    <City>Laufeld</City>
+    <Street>Luetzowplatz 24</Street>
+    <ZIP>54533</ZIP>
+  </Customer>
+  <Customer ID="60c90dd2-ed80-4ecb-837f-58c1bfb81f0b">
+    <Surname>Niklas</Surname>
+    <Lastname>Lehmann</Lastname>
+    <City>Sangerhausen</City>
+    <Street>Flotowstr. 51</Street>
+    <ZIP>6517</ZIP>
+  </Customer>
+  <Customer ID="2493db9b-ff1b-4645-99c3-d6607bb439d8">
+    <Surname>Christina</Surname>
+    <Lastname>Cole</Lastname>
+    <City>München</City>
+    <Street>Kurfuerstendamm 68</Street>
+    <ZIP>80006</ZIP>
+  </Customer>
+  <Customer ID="a3b915d3-bd55-4c52-895b-7341bf0d66c6">
+    <Surname>Mike</Surname>
+    <Lastname>Bürger</Lastname>
+    <City>Fraureuth</City>
+    <Street>Reeperbahn 66</Street>
+    <ZIP>8425</ZIP>
+  </Customer>
+  <Customer ID="4d599e39-c272-4127-b939-2e1a3705c513">
+    <Surname>Phillipp</Surname>
+    <Lastname>Braun</Lastname>
+    <City>Fürth</City>
+    <Street>Rathausstrasse 40</Street>
+    <ZIP>90766</ZIP>
+  </Customer>
+  <Customer ID="fbc1f7d6-8fa4-440b-8d8f-f9ad91eef9e9">
+    <Surname>Ulrike</Surname>
+    <Lastname>Sommer</Lastname>
+    <City>Grasellenbach</City>
+    <Street>Scharnweberstrasse 3</Street>
+    <ZIP>64689</ZIP>
+  </Customer>
+</Customers>

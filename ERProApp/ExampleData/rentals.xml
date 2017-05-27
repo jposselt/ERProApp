@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Rentals>
+  <Rental ID="9dacfc09-1f0e-4df8-b32d-55c57d174605">
+    <CustomerID>7602d3d1-a2f7-4fff-8330-4d3bda2729fa</CustomerID>
+    <ItemID>f9187333-c9e8-4dbd-81c4-fa798e61e4ba</ItemID>
+    <StartDate>2017-05-01</StartDate>
+    <EndDate>2017-05-01</EndDate>
+    <Reservation>false</Reservation>
+    <Overdue>false</Overdue>
+  </Rental>
+  <Rental ID="9fbb85ce-cb33-4c3b-8915-c8e15b427ce0">
+    <CustomerID>abbcbd1e-9c77-4ace-9c8a-2a5bd3726d47</CustomerID>
+    <ItemID>8377e4ff-9a97-4d47-9920-45ddcee7b6ab</ItemID>
+    <StartDate>2017-08-01</StartDate>
+    <EndDate>2017-08-01</EndDate>
+    <Reservation>true</Reservation>
+    <Overdue>false</Overdue>
+  </Rental>
+  <Rental ID="86c93a9d-fa8a-4a74-9e62-7b2d4509f8bd">
+    <CustomerID>2493db9b-ff1b-4645-99c3-d6607bb439d8</CustomerID>
+    <ItemID>7c64c3ba-fda0-4e8a-aca3-d595046d3170</ItemID>
+    <StartDate>2017-08-01</StartDate>
+    <EndDate>2017-08-01</EndDate>
+    <Reservation>true</Reservation>
+    <Overdue>false</Overdue>
+  </Rental>
+  <Rental ID="188ccedf-9185-4397-bc17-0095d9d895ae">
+    <CustomerID>abbcbd1e-9c77-4ace-9c8a-2a5bd3726d47</CustomerID>
+    <ItemID>002e516d-2f90-4b26-acfc-972fe383d730</ItemID>
+    <StartDate>2017-08-01</StartDate>
+    <EndDate>2017-08-01</EndDate>
+    <Reservation>true</Reservation>
+    <Overdue>false</Overdue>
+  </Rental>
+  <Rental ID="95318dad-bb0b-4457-aa71-c63c680f0204">
+    <CustomerID>fbc1f7d6-8fa4-440b-8d8f-f9ad91eef9e9</CustomerID>
+    <ItemID>556f1d61-1b49-4fc6-aef7-9b9587e38baf</ItemID>
+    <StartDate>2017-08-01</StartDate>
+    <EndDate>2017-08-01</EndDate>
+    <Reservation>true</Reservation>
+    <Overdue>false</Overdue>
+  </Rental>
+  <Rental ID="e9adf82f-53dc-4078-a144-8187de862cb1">
+    <CustomerID>7602d3d1-a2f7-4fff-8330-4d3bda2729fa</CustomerID>
+    <ItemID>880ae6f1-7434-44b4-b10a-38f70aa93863</ItemID>
+    <StartDate>2017-08-01</StartDate>
+    <EndDate>2017-08-01</EndDate>
+    <Reservation>true</Reservation>
+    <Overdue>false</Overdue>
+  </Rental>
+  <Rental ID="d876fe35-7272-4d1b-94f9-2673e15e97f7">
+    <CustomerID>dd60e57f-296b-40c0-86f7-d619998d1b41</CustomerID>
+    <ItemID>a27adac2-cc1d-43b4-bbda-1ca890e144a9</ItemID>
+    <StartDate>2017-08-01</StartDate>
+    <EndDate>2017-08-01</EndDate>
+    <Reservation>false</Reservation>
+    <Overdue>false</Overdue>
+  </Rental>
+  <Rental ID="079439aa-0d36-432d-a6dd-bf058dabf1af">
+    <CustomerID>ee5b251b-39cb-487f-b245-b0125f33bad4</CustomerID>
+    <ItemID>5ccf4c96-abbd-44e5-8df7-d7e04424791c</ItemID>
+    <StartDate>2017-08-01</StartDate>
+    <EndDate>2017-08-01</EndDate>
+    <Reservation>false</Reservation>
+    <Overdue>false</Overdue>
+  </Rental>
+  <Rental ID="57f9789f-e119-4f0f-a8a0-576e9a465555">
+    <CustomerID>60c90dd2-ed80-4ecb-837f-58c1bfb81f0b</CustomerID>
+    <ItemID>57eae055-b15e-4fbf-9f56-5c99fb764cca</ItemID>
+    <StartDate>2017-08-01</StartDate>
+    <EndDate>2017-08-01</EndDate>
+    <Reservation>false</Reservation>
+    <Overdue>false</Overdue>
+  </Rental>
+  <Rental ID="7e21b837-550b-45c6-b39b-9710c3964bb2">
+    <CustomerID>2493db9b-ff1b-4645-99c3-d6607bb439d8</CustomerID>
+    <ItemID>7c4835e5-32e0-4933-a2d3-2c40979c3adb</ItemID>
+    <StartDate>2017-08-01</StartDate>
+    <EndDate>2017-08-01</EndDate>
+    <Reservation>false</Reservation>
+    <Overdue>false</Overdue>
+  </Rental>
+  <Rental ID="f1ee48c0-23e8-43d7-ad0b-6194511a9020">
+    <CustomerID>a3b915d3-bd55-4c52-895b-7341bf0d66c6</CustomerID>
+    <ItemID>c8cdaba8-f1a8-43f7-b293-0a496646608d</ItemID>
+    <StartDate>2017-08-01</StartDate>
+    <EndDate>2017-08-01</EndDate>
+    <Reservation>false</Reservation>
+    <Overdue>false</Overdue>
+  </Rental>
+  <Rental ID="3dfece67-dd74-414b-8ccc-cd260abe5665">
+    <CustomerID>a3b915d3-bd55-4c52-895b-7341bf0d66c6</CustomerID>
+    <ItemID>4da89022-0510-4008-9c15-98314288b69c</ItemID>
+    <StartDate>2017-08-01</StartDate>
+    <EndDate>2017-08-01</EndDate>
+    <Reservation>false</Reservation>
+    <Overdue>false</Overdue>
+  </Rental>
+  <Rental ID="6a4672ce-5e26-4518-ac6b-746fce6ac400">
+    <CustomerID>abbcbd1e-9c77-4ace-9c8a-2a5bd3726d47</CustomerID>
+    <ItemID>f834a88a-c1e3-4217-bd9e-60decd69940a</ItemID>
+    <StartDate>2017-08-01</StartDate>
+    <EndDate>2017-08-01</EndDate>
+    <Reservation>false</Reservation>
+    <Overdue>false</Overdue>
+  </Rental>
+  <Rental ID="0db40eb1-fed1-48a5-9a7a-409665188a13">
+    <CustomerID>60c90dd2-ed80-4ecb-837f-58c1bfb81f0b</CustomerID>
+    <ItemID>2da4378e-dc97-46a3-a2ff-84ef2f14808f</ItemID>
+    <StartDate>2017-08-01</StartDate>
+    <EndDate>2017-08-01</EndDate>
+    <Reservation>true</Reservation>
+    <Overdue>false</Overdue>
+  </Rental>
+  <Rental ID="1e9b4d2f-39aa-4d26-b381-dbf0b803ae8e">
+    <CustomerID>60c90dd2-ed80-4ecb-837f-58c1bfb81f0b</CustomerID>
+    <ItemID>3fdc6c47-a539-4f7e-9d4c-fa984f28a22e</ItemID>
+    <StartDate>2017-08-01</StartDate>
+    <EndDate>2017-08-01</EndDate>
+    <Reservation>false</Reservation>
+    <Overdue>false</Overdue>
+  </Rental>
+</Rentals>
