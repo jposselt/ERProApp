@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:toolkit="clr-namespace:Microsoft.Windows.Controls;assembly=WpfToolkit"
+        xmlns:primitives="clr-namespace:Microsoft.Windows.Controls.Primitives;assembly=WPFToolkit"
         xmlns:local="clr-namespace:ERProApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525"
@@ -13,6 +14,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="CalendarStyle.xaml"/>
+                <ResourceDictionary Source="Converters.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -30,7 +32,8 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid Name="RentalData" Grid.Column="0"
+            
+            <!--<DataGrid Name="RentalData" Grid.Column="0"
                   ItemsSource="{Binding RentalData}"
                   AutoGenerateColumns="False"
                   SelectionMode="Extended" SelectionUnit="FullRow"
@@ -42,12 +45,57 @@
                     <DataGridTextColumn Header="Kunde" Binding="{Binding Taker.FullName}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Buch" Binding="{Binding Item.Title}"></DataGridTextColumn>
                 </DataGrid.Columns>
+            </DataGrid>-->
+
+            <DataGrid ItemsSource="{Binding Rentals}"  Grid.Column="0"
+                      AutoGenerateColumns="False"
+                      SelectionMode="Extended" SelectionUnit="FullRow"
+                      CanUserReorderColumns="True" CanUserResizeColumns="True" 
+                      CanUserResizeRows="False" CanUserSortColumns="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Start" Binding="{Binding StartAsString}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Ende" Binding="{Binding EndAsString}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Kunde" Binding="{Binding Taker.FullName}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Buch" Binding="{Binding Item.Title}"></DataGridTextColumn>
+                </DataGrid.Columns>
+                <DataGrid.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Path=Name}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                        <GroupStyle.ContainerStyle>
+                            <Style TargetType="{x:Type GroupItem}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type GroupItem}">
+                                            <Expander>
+                                                <Expander.Header>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <!--<TextBlock Text="{Binding Path=Name}" />-->
+                                                        <TextBlock Text="{Binding Name, Converter={StaticResource RentalTypeConverter}}"/>
+                                                        <TextBlock Text="{Binding Path=ItemCount}"/>
+                                                        <!--<TextBlock Text=" Items"/>-->
+                                                    </StackPanel>
+                                                </Expander.Header>
+                                                <ItemsPresenter />
+                                            </Expander>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </GroupStyle.ContainerStyle>
+                    </GroupStyle>
+                </DataGrid.GroupStyle>
             </DataGrid>
             <GridSplitter HorizontalAlignment="Right" 
                   VerticalAlignment="Stretch" 
                   Grid.Column="1" ResizeBehavior="PreviousAndNext"
                   Width="5" Background="#FFBCBCBC"/>
-            <toolkit:Calendar Grid.Column="2"/>
+            <toolkit:Calendar Name="RentalCalendar" Grid.Column="2"/>
         </Grid>
     </DockPanel>
 </Window>
