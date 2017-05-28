@@ -32,20 +32,6 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
-            <!--<DataGrid Name="RentalData" Grid.Column="0"
-                  ItemsSource="{Binding RentalData}"
-                  AutoGenerateColumns="False"
-                  SelectionMode="Extended" SelectionUnit="FullRow"
-                  CanUserReorderColumns="True" CanUserResizeColumns="True" 
-                  CanUserResizeRows="False" CanUserSortColumns="True">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Start" Binding="{Binding StartAsString}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Ende" Binding="{Binding EndAsString}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Kunde" Binding="{Binding Taker.FullName}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Buch" Binding="{Binding Item.Title}"></DataGridTextColumn>
-                </DataGrid.Columns>
-            </DataGrid>-->
 
             <DataGrid ItemsSource="{Binding Rentals}"  Grid.Column="0"
                       Name="RentalData"
@@ -78,10 +64,8 @@
                                             <Expander>
                                                 <Expander.Header>
                                                     <StackPanel Orientation="Horizontal">
-                                                        <!--<TextBlock Text="{Binding Path=Name}" />-->
                                                         <TextBlock Text="{Binding Name, Converter={StaticResource RentalTypeConverter}}"/>
                                                         <TextBlock Text="{Binding Path=ItemCount}"/>
-                                                        <!--<TextBlock Text=" Items"/>-->
                                                     </StackPanel>
                                                 </Expander.Header>
                                                 <ItemsPresenter />
