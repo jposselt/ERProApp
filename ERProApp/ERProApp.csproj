@@ -58,9 +58,15 @@
     <Compile Include="Book.cs" />
     <Compile Include="DataController.cs" />
     <Compile Include="DayNameConverter.cs" />
+    <Compile Include="HighlightDatesConverter.cs" />
     <Compile Include="Rental.cs" />
+    <Compile Include="RentalTypeConverter.cs" />
     <Compile Include="ViewController.cs" />
     <Page Include="CalendarStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Converters.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

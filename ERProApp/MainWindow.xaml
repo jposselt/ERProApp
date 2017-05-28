@@ -48,10 +48,13 @@
             </DataGrid>-->
 
             <DataGrid ItemsSource="{Binding Rentals}"  Grid.Column="0"
+                      Name="RentalData"
                       AutoGenerateColumns="False"
+                      IsReadOnly="True"
                       SelectionMode="Extended" SelectionUnit="FullRow"
                       CanUserReorderColumns="True" CanUserResizeColumns="True" 
-                      CanUserResizeRows="False" CanUserSortColumns="True">
+                      CanUserResizeRows="False" CanUserSortColumns="True"
+                      SelectionChanged="dataGrid_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Start" Binding="{Binding StartAsString}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Ende" Binding="{Binding EndAsString}"></DataGridTextColumn>

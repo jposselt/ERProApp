@@ -342,6 +342,11 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="primitives:CalendarDayButton">
+
+                    <ControlTemplate.Resources>
+                        <local:HighlightDatesConverter x:Key="conv" />
+                    </ControlTemplate.Resources>
+
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -449,6 +454,9 @@
                         <Rectangle x:Name="SelectedBackground" Grid.Row="1" RadiusX="1" RadiusY="1" Opacity="0" Fill="{TemplateBinding Background}"/>
                         <Rectangle x:Name="Background" Grid.Row="1" RadiusX="1" RadiusY="1" Opacity="0" Fill="{TemplateBinding Background}" />
                         <Rectangle x:Name="InactiveBackground" Grid.Row="1" RadiusX="1" RadiusY="1" Opacity="0" Fill="#FFA5BFE1"/>
+
+                        <Rectangle x:Name="RedLetterDayBackground" Grid.Row="1" IsHitTestVisible="False" Fill="#80FF0000" />
+
                         <Border>
                             <Border.Background>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
@@ -475,6 +483,13 @@
                         <Path x:Name="Blackout" Grid.Row="1" Opacity="0" Margin="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.5,0.5" Fill="#FF000000" Stretch="Fill" Data="M8.1772461,11.029181 L10.433105,11.029181 L11.700684,12.801641 L12.973633,11.029181 L15.191895,11.029181 L12.844727,13.999395 L15.21875,17.060919 L12.962891,17.060919 L11.673828,15.256231 L10.352539,17.060919 L8.1396484,17.060919 L10.519043,14.042364 z"/>
                         <Rectangle Width="0" x:Name="DayButtonFocusVisual" Grid.Row="1" Visibility="Collapsed" IsHitTestVisible="false" RadiusX="1" RadiusY="1" Stroke="#FF45D6FA"/>
                     </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Converter={StaticResource conv}}" Value="{x:Null}">
+                            <Setter TargetName="RedLetterDayBackground" Property="Visibility" Value="Hidden" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
