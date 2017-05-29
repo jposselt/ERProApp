@@ -23,6 +23,8 @@ namespace ERProApp
             this.DataContext = new ViewController();
         }
 
+        #region Eventhandlers
+        
         // Eventhandler wenn das Fenster geschlossen wird
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -30,6 +32,7 @@ namespace ERProApp
             if (result == false) { e.Cancel = true; }
         }
 
+        // Eventhandler wenn im datagrid der Ausleihen eine Zeile selektiert wird
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DataGrid dataGrid = sender as DataGrid;
@@ -67,6 +70,37 @@ namespace ERProApp
                 
             }
         }
+
+        // Eventhandler zum Loeschen ueber das Kontextmenue
+        private void dataGrid_Delete(object sender, RoutedEventArgs e)
+        {
+            // Dummy
+        }
+
+        // Eventhandler zum umwandel einer Reservierung in eine Ausleihe ueber das Kontextmenue
+        private void dataGrid_ReservationToRent(object sender, RoutedEventArgs e)
+        {
+            // Dummy
+        }
+
+        // Eventhandler zum Anzeigen der detailierten Gegenstandsinformationen
+        private void dataGrid_ShowItemInfo(object sender, RoutedEventArgs e)
+        {
+            ItemInfoView itemInfo = new ItemInfoView();
+            itemInfo.Owner = this;
+            itemInfo.ShowDialog();
+        }
+
+        // Eventhandler zum zum Anzeigen der detailierten Kundeninformationen
+        private void dataGrid_ShowCustomerInfo(object sender, RoutedEventArgs e)
+        {
+            CustomerInfoView customerInfo = new CustomerInfoView();
+            customerInfo.Owner = this;
+            //customerInfo.DataContext = this.RentalData.SelectedItem;
+            customerInfo.ShowDialog();
+        }
+
+        #endregion // Eventhandlers
 
     }
 }

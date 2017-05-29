@@ -40,7 +40,8 @@
                       SelectionMode="Extended" SelectionUnit="FullRow"
                       CanUserReorderColumns="True" CanUserResizeColumns="True" 
                       CanUserResizeRows="False" CanUserSortColumns="True"
-                      SelectionChanged="dataGrid_SelectionChanged">
+                      SelectionChanged="dataGrid_SelectionChanged"
+                      AlternatingRowBackground="Gainsboro"  AlternationCount="2">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Start" Binding="{Binding StartAsString}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Ende" Binding="{Binding EndAsString}"></DataGridTextColumn>
@@ -77,6 +78,28 @@
                         </GroupStyle.ContainerStyle>
                     </GroupStyle>
                 </DataGrid.GroupStyle>
+
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Löschen" Click="dataGrid_Delete">
+                            <!--<Image Width="12" Height="12" Source="Images/Delete.png" />-->
+                        </MenuItem>
+                        <MenuItem Header="Ausleihen"
+                                  IsEnabled="True"
+                                  Click="dataGrid_ReservationToRent">
+                            <!--<Image Width="12" Height="12" Source="" />-->
+                        </MenuItem>
+                        <MenuItem Header="Gegenstand Info"
+                                  Click="dataGrid_ShowItemInfo">
+                            <!--<Image Width="12" Height="12" Source="" />-->
+                        </MenuItem>
+                        <MenuItem Header="Kunden Info"
+                                  Click="dataGrid_ShowCustomerInfo">
+                            <!--<Image Width="12" Height="12" Source="" />-->
+                        </MenuItem>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+
             </DataGrid>
             <GridSplitter HorizontalAlignment="Right" 
                   VerticalAlignment="Stretch" 
