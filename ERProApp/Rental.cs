@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace ERProApp
 {
     /// <summary>
     /// Klasse zur Modelierung Ausleihen und Reservierungen
     /// </summary>
-    public class Rental
+    public class Rental : INotifyPropertyChanged
     {
         #region Klassenvariablen
         private DateTime defaultDate = new DateTime(1970, 1, 1);
@@ -30,6 +31,8 @@ namespace ERProApp
         // Diese Variablen werden nicht Serialisiert
         private Customer _customer;
         private Book _item;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion // Membervariablen
 
@@ -92,7 +95,12 @@ namespace ERProApp
         public bool Reservation
         {
             get { return _reservation; }
-            set { _reservation = value; }
+            set
+            {
+                _reservation = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("Reservation"));
+            }
         }
 
         /// <summary>

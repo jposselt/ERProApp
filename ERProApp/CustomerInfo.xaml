@@ -25,9 +25,9 @@
                 <Label Grid.Row="0" Grid.Column="0" Content="Nachname:"/>
                 <Label Grid.Row="1" Grid.Column="0" Content="Vorname:"/>
                 <Label Grid.Row="2" Grid.Column="0" Content="Adresse:"/>
-                <TextBox Grid.Column="1" Grid.Row="0" Margin="3" Text=""/>
-                <TextBox Grid.Column="1" Grid.Row="1" Margin="3" Text=""/>
-                <TextBox Grid.Column="1" Grid.Row="2" Margin="3" Text=""/>
+                <TextBox Grid.Column="1" Grid.Row="0" Margin="3" Text="{Binding Path=Taker.LastName, Mode=OneWay}"/>
+                <TextBox Grid.Column="1" Grid.Row="1" Margin="3" Text="{Binding Path=Taker.SurName, Mode=OneWay}"/>
+                <TextBox Grid.Column="1" Grid.Row="2" Margin="3" Text="{Binding Path=Taker.FullAddress, Mode=OneWay}"/>
             </Grid>
             <Grid Grid.Row="1" Background="#FFF0F0F0">
                 <Button HorizontalAlignment="Center" MinWidth="80" Margin="3" 

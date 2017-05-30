@@ -96,7 +96,7 @@ namespace ERProApp
         {
             CustomerInfoView customerInfo = new CustomerInfoView();
             customerInfo.Owner = this;
-            //customerInfo.DataContext = this.RentalData.SelectedItem;
+            customerInfo.DataContext = this.RentalData.SelectedItem;
             customerInfo.ShowDialog();
         }
 

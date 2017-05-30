@@ -83,12 +83,21 @@ namespace ERProApp
         }
 
         /// <summary>
-        /// Ruft den Vollen Namen des Kunden ab
+        /// Ruft den vollen Namen des Kunden ab
         /// </summary>
         [XmlIgnore] // Bei der Serialisierung und Deserialisierung ignorieren
         public String FullName
         {
             get { return _lastName+", "+_surName; }
+        }
+
+        /// <summary>
+        /// Ruft die volle Adresse des Kunden ab
+        /// </summary>
+        [XmlIgnore] // Bei der Serialisierung und Deserialisierung ignorieren
+        public String FullAddress
+        {
+            get { return _street + "\n" + _zip + " " + _city; }
         }
 
         /// <summary>
