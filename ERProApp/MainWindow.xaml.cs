@@ -88,6 +88,7 @@ namespace ERProApp
         {
             ItemInfoView itemInfo = new ItemInfoView();
             itemInfo.Owner = this;
+            itemInfo.DataContext = this.RentalData.SelectedItem;
             itemInfo.ShowDialog();
         }
 

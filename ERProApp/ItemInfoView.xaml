@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ERProApp"
         mc:Ignorable="d"
-        Title="ItemInfoView" Height="280" Width="300">
+        Title="Buchdetails" Height="240" Width="300">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -32,14 +32,12 @@
                 <Label Grid.Row="3" Grid.Column="0" Content="Jahr:"/>
                 <Label Grid.Row="4" Grid.Column="0" Content="Lagerort:"/>
                 <Label Grid.Row="5" Grid.Column="0" Content="Status:"/>
-                <Label Grid.Row="6" Grid.Column="0" Content="Gesperrt:"/>
-                <TextBox Grid.Column="1" Grid.Row="0" Margin="3" Text=""/>
-                <TextBox Grid.Column="1" Grid.Row="1" Margin="3" Text=""/>
-                <TextBox Grid.Column="1" Grid.Row="2" Margin="3" Text=""/>
-                <TextBox Grid.Column="1" Grid.Row="3" Margin="3" Text=""/>
-                <TextBox Grid.Column="1" Grid.Row="4" Margin="3" Text=""/>
-                <TextBox Grid.Column="1" Grid.Row="5" Margin="3" Text=""/>
-                <TextBox Grid.Column="1" Grid.Row="6" Margin="3" Text=""/>
+                <TextBox Grid.Column="1" Grid.Row="0" Margin="3" Text="{Binding Path=Item.Title}"/>
+                <TextBox Grid.Column="1" Grid.Row="1" Margin="3" Text="{Binding Path=Item.Author}"/>
+                <TextBox Grid.Column="1" Grid.Row="2" Margin="3" Text="{Binding Path=Item.Genre}"/>
+                <TextBox Grid.Column="1" Grid.Row="3" Margin="3" Text="{Binding Path=Item.Year}"/>
+                <TextBox Grid.Column="1" Grid.Row="4" Margin="3" Text="{Binding Path=Item.Location}"/>
+                <TextBox Grid.Column="1" Grid.Row="5" Margin="3" Text="{Binding Path=Item.Status}"/>
             </Grid>
             <Grid Grid.Row="1" Background="#FFF0F0F0">
                 <Button HorizontalAlignment="Center" MinWidth="80" Margin="3" 
