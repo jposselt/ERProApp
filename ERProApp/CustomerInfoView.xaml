@@ -1,0 +1,38 @@
+﻿<Window x:Class="ERProApp.CustomerInfoView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ERProApp"
+        mc:Ignorable="d"
+        Title="Kundendetails" Height="200" Width="300">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="200" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="Nachname:"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Vorname:"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="Adresse:"/>
+                <TextBox Grid.Column="1" Grid.Row="0" Margin="3" Text="{Binding Path=Taker.LastName, Mode=OneWay}"/>
+                <TextBox Grid.Column="1" Grid.Row="1" Margin="3" Text="{Binding Path=Taker.SurName, Mode=OneWay}"/>
+                <TextBox Grid.Column="1" Grid.Row="2" Margin="3" Text="{Binding Path=Taker.FullAddress, Mode=OneWay}"/>
+            </Grid>
+            <Grid Grid.Row="1" Background="#FFF0F0F0">
+                <Button HorizontalAlignment="Center" MinWidth="80" Margin="3" 
+                        Content="Ok" Click="Button_OkClick"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

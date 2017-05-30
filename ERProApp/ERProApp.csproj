@@ -56,8 +56,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Book.cs" />
-    <Compile Include="CustomerInfo.xaml.cs">
-      <DependentUpon>CustomerInfo.xaml</DependentUpon>
+    <Compile Include="CustomerInfoView.xaml.cs">
+      <DependentUpon>CustomerInfoView.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataController.cs" />
     <Compile Include="DayNameConverter.cs" />
@@ -76,7 +76,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CustomerInfo.xaml">
+    <Page Include="CustomerInfoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
