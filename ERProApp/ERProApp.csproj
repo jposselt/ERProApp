@@ -59,6 +59,9 @@
     <Compile Include="CustomerInfoView.xaml.cs">
       <DependentUpon>CustomerInfoView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomerSearchView.xaml.cs">
+      <DependentUpon>CustomerSearchView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DataController.cs" />
     <Compile Include="DayNameConverter.cs" />
     <Compile Include="HighlightDatesConverter.cs" />
@@ -77,6 +80,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomerInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomerSearchView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

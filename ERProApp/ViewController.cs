@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows.Data;
 
 namespace ERProApp
@@ -9,23 +10,22 @@ namespace ERProApp
     class ViewController
     {
         private ListCollectionView _rentalData = new ListCollectionView(DataController.Rentals);
+        private CollectionViewSource _customerSourceList = new CollectionViewSource() { Source = DataController.Customers };
 
         public ListCollectionView Rentals
         {
             get { return _rentalData; }
         }
 
+        public CollectionViewSource Customers
+        {
+            get { return _customerSourceList; }
+        }
+
         public ViewController()
         {
             _rentalData.GroupDescriptions.Add(new PropertyGroupDescription("Reservation"));
         }
-
-        /*
-        public static ObservableCollection<Rental> RentalData
-        {
-            get { return DataController.Rentals; }
-        }
-        */
 
     }
 }

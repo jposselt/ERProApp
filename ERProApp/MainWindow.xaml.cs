@@ -13,14 +13,17 @@ namespace ERProApp
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private ViewController vc;
+
         /// <summary>
         /// Standarkonstruktor
         /// </summary>
         public MainWindow()
         {
             InitializeComponent();
-
-            this.DataContext = new ViewController();
+            vc = new ViewController();
+            this.DataContext = vc;
         }
 
         #region Eventhandlers
@@ -99,6 +102,16 @@ namespace ERProApp
             customerInfo.Owner = this;
             customerInfo.DataContext = this.RentalData.SelectedItem;
             customerInfo.ShowDialog();
+        }
+
+        // Test
+        private void button_SearchCustomer(object sender, RoutedEventArgs e)
+        {
+            CustomerSearchView customerSearch = new CustomerSearchView();
+            customerSearch.Owner = this;
+            customerSearch.DataContext = vc.Customers.View;
+            customerSearch.Customers = vc.Customers;
+            customerSearch.Show();
         }
 
         #endregion // Eventhandlers
