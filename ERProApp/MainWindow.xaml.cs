@@ -95,16 +95,17 @@ namespace ERProApp
             itemInfo.ShowDialog();
         }
 
-        // Eventhandler zum zum Anzeigen der detailierten Kundeninformationen
+        // Eventhandler zum Anzeigen der detailierten Kundeninformationen
         private void dataGrid_ShowCustomerInfo(object sender, RoutedEventArgs e)
         {
             CustomerInfoView customerInfo = new CustomerInfoView();
             customerInfo.Owner = this;
+            customerInfo.CustomerRentals.ItemsSource = vc.Rentals;
             customerInfo.DataContext = this.RentalData.SelectedItem;
             customerInfo.ShowDialog();
         }
 
-        // Test
+        // Eventhandler zum Suche nach Kunden
         private void button_SearchCustomer(object sender, RoutedEventArgs e)
         {
             CustomerSearchView customerSearch = new CustomerSearchView();

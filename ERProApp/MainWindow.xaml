@@ -21,7 +21,7 @@
 
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-            <Button Margin="10">Button 1</Button>
+            <Button Margin="10" Click="button_SearchCustomer">Button 1</Button>
             <Button Margin="10">Button 2</Button>
             <Button Margin="10">Button 3</Button>
             <Button Margin="10">Button 4</Button>
@@ -85,7 +85,6 @@
                             <!--<Image Width="12" Height="12" Source="Images/Delete.png" />-->
                         </MenuItem>
                         <MenuItem Header="Ausleihen"
-                                  IsEnabled="True"
                                   Click="dataGrid_ReservationToRent">
                             <!--<Image Width="12" Height="12" Source="" />-->
                         </MenuItem>
