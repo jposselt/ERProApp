@@ -5,7 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ERProApp"
         mc:Ignorable="d"
-        Title="Kundendetails" Height="200" Width="300">
+        Title="Kundendetails" Height="300" Width="350"
+        Loaded="Window_Loaded">
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Converters.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -14,6 +24,7 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
@@ -25,9 +36,74 @@
                 <Label Grid.Row="0" Grid.Column="0" Content="Nachname:"/>
                 <Label Grid.Row="1" Grid.Column="0" Content="Vorname:"/>
                 <Label Grid.Row="2" Grid.Column="0" Content="Adresse:"/>
-                <TextBox Grid.Column="1" Grid.Row="0" Margin="3" Text="{Binding Path=Taker.LastName, Mode=OneWay}"/>
-                <TextBox Grid.Column="1" Grid.Row="1" Margin="3" Text="{Binding Path=Taker.SurName, Mode=OneWay}"/>
-                <TextBox Grid.Column="1" Grid.Row="2" Margin="3" Text="{Binding Path=Taker.FullAddress, Mode=OneWay}"/>
+                <Label Grid.Row="3" Grid.Column="0" Content="Ausleihen:" Margin="0,5,0,0"/>
+                <TextBox Grid.Column="1" Grid.Row="0" Margin="3" Text="{Binding Path=LastName, Mode=OneWay}"/>
+                <TextBox Grid.Column="1" Grid.Row="1" Margin="3" Text="{Binding Path=SurName, Mode=OneWay}"/>
+                <TextBox Grid.Column="1" Grid.Row="2" Margin="3" Text="{Binding Path=FullAddress, Mode=OneWay}"/>
+
+                <DataGrid Grid.Column="1" Grid.Row="3"
+                      Name="CustomerRentals"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      SelectionMode="Extended" SelectionUnit="FullRow"
+                      CanUserReorderColumns="True" CanUserResizeColumns="True" 
+                      CanUserResizeRows="False" CanUserSortColumns="True"
+                      AlternatingRowBackground="Gainsboro"  AlternationCount="2"
+                      Margin="0,5,-60,0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Titel" Binding="{Binding Item.Title}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Start" Binding="{Binding StartAsString}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Ende" Binding="{Binding EndAsString}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                    <DataGrid.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Path=Name}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                            <GroupStyle.ContainerStyle>
+                                <Style TargetType="{x:Type GroupItem}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type GroupItem}">
+                                                <Expander>
+                                                    <Expander.Header>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock Text="{Binding Name, Converter={StaticResource RentalTypeConverter}}"/>
+                                                            <TextBlock Text="{Binding Path=ItemCount}"/>
+                                                        </StackPanel>
+                                                    </Expander.Header>
+                                                    <ItemsPresenter />
+                                                </Expander>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </GroupStyle.ContainerStyle>
+                        </GroupStyle>
+                    </DataGrid.GroupStyle>
+
+                    <!--<DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Löschen" Click="dataGrid_Delete">
+                                <Image Width="12" Height="12" Source="Images/Delete.png" />
+                            </MenuItem>
+                            <MenuItem Header="Ausleihen"
+                                  Click="dataGrid_ReservationToRent">
+                                <Image Width="12" Height="12" Source="" />
+                            </MenuItem>
+                            <MenuItem Header="Gegenstand Info"
+                                  Click="dataGrid_ShowItemInfo">
+                                <Image Width="12" Height="12" Source="" />
+                            </MenuItem>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>-->
+
+                </DataGrid>
+
             </Grid>
             <Grid Grid.Row="1" Background="#FFF0F0F0">
                 <Button HorizontalAlignment="Center" MinWidth="80" Margin="3" 

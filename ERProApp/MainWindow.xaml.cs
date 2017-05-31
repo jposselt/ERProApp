@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 
 namespace ERProApp
@@ -100,8 +101,8 @@ namespace ERProApp
         {
             CustomerInfoView customerInfo = new CustomerInfoView();
             customerInfo.Owner = this;
-            customerInfo.CustomerRentals.ItemsSource = vc.Rentals;
-            customerInfo.DataContext = this.RentalData.SelectedItem;
+            customerInfo.Rentals = new CollectionViewSource() { Source = vc.Rentals.SourceCollection };
+            customerInfo.SelectedCustomer = ((Rental)this.RentalData.SelectedItem).Taker;
             customerInfo.ShowDialog();
         }
 
