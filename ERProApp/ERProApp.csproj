@@ -68,6 +68,9 @@
     <Compile Include="ItemInfoView.xaml.cs">
       <DependentUpon>ItemInfoView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ItemSearchView.xaml.cs">
+      <DependentUpon>ItemSearchView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Rental.cs" />
     <Compile Include="RentalTypeConverter.cs" />
     <Compile Include="ViewController.cs" />
@@ -92,6 +95,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ItemInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemSearchView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
