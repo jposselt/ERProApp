@@ -21,12 +21,14 @@ namespace ERProApp
             }
         }
 
+        public Customer SelectedCustomer => CustomerData.SelectedItem as Customer;
+
         public CustomerSearchView()
         {
             InitializeComponent();
         }
 
-        // 
+        // Suchfilter mit verschiedenen Kategorien
         private bool _customers_Filter(object item)
         {
             Customer customer = item as Customer;
@@ -61,6 +63,7 @@ namespace ERProApp
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
             // Fenster schließen.
+            DialogResult = true;
             Close();
         }
 
@@ -70,6 +73,7 @@ namespace ERProApp
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             // Fenster schließen.
+            DialogResult = false;
             Close();
         }
 

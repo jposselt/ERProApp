@@ -43,6 +43,7 @@ namespace ERProApp
             // Erstelle neu Ausleihe
 
             // Fenster schließen.
+            DialogResult = true;
             Close();
         }
 
@@ -52,6 +53,7 @@ namespace ERProApp
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             // Fenster schließen.
+            DialogResult = false;
             Close();
         }
 
@@ -64,7 +66,12 @@ namespace ERProApp
             customerSearch.Owner = this;
             customerSearch.DataContext = _customers.View;
             customerSearch.Customers = _customers;
-            customerSearch.ShowDialog();
+
+            if (customerSearch.ShowDialog().Value)
+            {
+                _selectedCustomer = customerSearch.SelectedCustomer;
+                CustomerName.Text = _selectedCustomer.FullName;
+            }
         }
 
         /// <summary>
@@ -76,7 +83,12 @@ namespace ERProApp
             bookSearch.Owner = this;
             bookSearch.DataContext = _books.View;
             bookSearch.Books = _books;
-            bookSearch.ShowDialog();
+
+            if (bookSearch.ShowDialog().Value)
+            {
+                _selectedBook = bookSearch.SelectedBook;
+                BookTitle.Text = _selectedBook.Title;
+            }
         }
     }
 }

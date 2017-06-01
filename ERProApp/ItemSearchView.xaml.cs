@@ -31,6 +31,8 @@ namespace ERProApp
             }
         }
 
+        public Book SelectedBook => ItemData.SelectedItem as Book;
+
         public ItemSearchView()
         {
             InitializeComponent();
@@ -76,6 +78,7 @@ namespace ERProApp
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
             // Fenster schließen.
+            DialogResult = true;
             Close();
         }
 
@@ -85,6 +88,7 @@ namespace ERProApp
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             // Fenster schließen.
+            DialogResult = false;
             Close();
         }
 
