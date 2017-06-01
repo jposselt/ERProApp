@@ -405,14 +405,6 @@ namespace ERProApp
             return overlap;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public static void OverdueCheck()
-        {
-
-        }
-
         #endregion // Funktionen
     }
 }
