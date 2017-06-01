@@ -116,9 +116,23 @@ namespace ERProApp
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Zähler fuer Reservierungen des Buchs
+        /// </summary>
+        public int ReservationCount { get; set; }
+
         #endregion // Properties (Eigenschaften)
 
         #region Konstruktoren
+
+        /// <summary>
+        /// Standardkonstruktor
+        /// </summary>
+        public Book()
+        {
+            //ReservationCount = 0;
+        }
+
         #endregion // Konstruktoren
     }
 }
