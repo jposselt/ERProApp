@@ -133,7 +133,10 @@ namespace ERProApp
             newRental.Owner = this;
             newRental.Customers = _vc.Customers;
             newRental.Books = _vc.Books;
-            newRental.ShowDialog();
+            if (newRental.ShowDialog().Value)
+            {
+                RentalData.InvalidateVisual();
+            }
         }
 
         #endregion // Eventhandlers

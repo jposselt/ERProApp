@@ -70,8 +70,8 @@
             </Grid.ColumnDefinitions>
             <Label Grid.Row="0" Grid.Column="0" Content="Start" FontWeight="Bold"/>
             <Label Grid.Row="0" Grid.Column="1" Content="Ende" FontWeight="Bold"/>
-            <DatePicker Grid.Row="1" Grid.Column="0" Margin="0,0,10,5" Focusable="False"/>
-            <DatePicker Grid.Row="1" Grid.Column="1" Margin="0,0,10,5" Focusable="False"/>
+            <DatePicker Name="StartDate" Grid.Row="1" Grid.Column="0" Margin="0,0,10,5" Focusable="False"/>
+            <DatePicker Name="EndDate" Grid.Row="1" Grid.Column="1" Margin="0,0,10,5" Focusable="False"/>
         </Grid>
         <Grid Grid.Row="7" Background="#FFF0F0F0" Height="40">
             <Grid.ColumnDefinitions>

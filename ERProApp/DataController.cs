@@ -94,12 +94,15 @@ namespace ERProApp
         #endregion // Konstruktoren
 
         #region Funktionen
+
         /// <summary>
-        /// 
+        /// Fuegt eine Ausleihe/Reservierung zur entsprechenden Liste hinzu.
         /// </summary>
-        public static void CreateRental()
+        /// <param name="rental"></param> Hinzuzufuegende Ausleihe/Reservierung
+        public static void AddRental(Rental rental)
         {
-            // TODO
+            // Fuegt das Objekt zur Liste hinzu
+            Rentals.Add(rental);
         }
 
         /// <summary>
@@ -385,9 +388,6 @@ namespace ERProApp
         /// <returns></returns>
         public static bool TimeOverlapCheck(Book item, DateTime start, DateTime end)
         {
-            if (start <= end)
-                return false;
-
             // Hilfsvariable
             bool overlap = false;
 

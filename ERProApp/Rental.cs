@@ -192,7 +192,7 @@ namespace ERProApp
             if (end == null)
                 _endDate = defaultDate;
             else
-                _endDate = start;
+                _endDate = end;
 
             // Vertausche Start/Enddatum, wenn Enddatum vor Startdatum
             if (_endDate < _startDate)

@@ -107,7 +107,7 @@
             </Grid>
             <Grid Grid.Row="1" Background="#FFF0F0F0">
                 <Button HorizontalAlignment="Center" MinWidth="80" Margin="3" 
-                        Content="Ok" Click="Button_OkClick"/>
+                        Content="_Ok" Click="Button_OkClick"/>
             </Grid>
         </Grid>
     </Grid>

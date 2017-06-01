@@ -36,11 +36,40 @@ namespace ERProApp
         /// </summary>
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            // Validiere Daten
 
-            // Warnung bei Terminueberlappung
+
+            // Validiere Daten
+            if(_selectedCustomer == null)
+            {
+                // Nachricht: keine Daten
+                MessageBox.Show("Es wurde kein Kunde ausgewählt","Fehlende Daten", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
+            if (_selectedBook == null)
+            {
+                // Nachricht: keine Daten
+                MessageBox.Show("Es wurde kein Buch ausgewählt", "Fehlende Daten", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
+            if (StartDate.SelectedDate == null || EndDate.SelectedDate == null)
+            {
+                // Nachricht: keine Daten
+                MessageBox.Show("Es wurde kein Start-/Enddatum ausgewählt", "Fehlende Daten", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+            else {
+                if(DataController.TimeOverlapCheck(_selectedBook, StartDate.SelectedDate.Value, EndDate.SelectedDate.Value))
+                {
+                    // Nachricht: Terminüberlappung
+                    MessageBox.Show("Der eingegebene Zeitraum überlappt mit einer anderen Ausleihe/Reservierung", "Terminüberlappung", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
+            }
 
             // Erstelle neu Ausleihe
+            DataController.AddRental(new Rental(_selectedCustomer, _selectedBook, StartDate.SelectedDate.Value, EndDate.SelectedDate.Value, TypeReserv.IsChecked.Value));
 
             // Fenster schließen.
             DialogResult = true;
