@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Xml.Serialization;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace ERProApp
 {
     /// <summary>
     /// Klasse zur Modelierung von Büchern
     /// </summary>
-    public class Book : IComparable
+    public class Book : IComparable, INotifyPropertyChanged
     {
         #region Membervariablen
 
@@ -22,6 +19,8 @@ namespace ERProApp
         private String _status;
         private int _year;
         private bool _blocked;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion // Membervariablen
 
@@ -84,7 +83,12 @@ namespace ERProApp
         public String Status
         {
             get { return _status; }
-            set { _status = value; }
+            set
+            {
+                _status = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("Status"));
+            }
         }
 
         /// <summary>
@@ -105,7 +109,12 @@ namespace ERProApp
         public bool Blocked
         {
             get { return _blocked; }
-            set { _blocked = value; }
+            set
+            {
+                _blocked = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("Blocked"));
+            }
         }
 
         /// <summary>

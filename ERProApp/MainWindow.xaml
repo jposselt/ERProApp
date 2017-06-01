@@ -88,6 +88,14 @@
                                   Click="dataGrid_ReservationToRent">
                             <!--<Image Width="12" Height="12" Source="" />-->
                         </MenuItem>
+                        <MenuItem Header="Gegenstand sperren"
+                                  Click="dataGrid_BlockItem">
+                            <!--<Image Width="12" Height="12" Source="" />-->
+                        </MenuItem>
+                        <MenuItem Header="Gegenstand entsperren"
+                                  Click="dataGrid_UnblockItem">
+                            <!--<Image Width="12" Height="12" Source="" />-->
+                        </MenuItem>
                         <MenuItem Header="Gegenstand Info"
                                   Click="dataGrid_ShowItemInfo">
                             <!--<Image Width="12" Height="12" Source="" />-->

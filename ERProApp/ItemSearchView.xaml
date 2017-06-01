@@ -70,6 +70,20 @@
                 <DataGridTextColumn Header="Jahr"  Binding="{Binding Year}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Status" Binding="{Binding Status}"></DataGridTextColumn>
             </DataGrid.Columns>
+
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Gegenstand sperren"
+                                  Click="context_BlockItem">
+                        <!--<Image Width="12" Height="12" Source="" />-->
+                    </MenuItem>
+                    <MenuItem Header="Gegenstand entsperren"
+                                  Click="context_UnblockItem">
+                        <!--<Image Width="12" Height="12" Source="" />-->
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+
         </DataGrid>
 
         <Grid Grid.Row="2" Background="#FFF0F0F0" Height="40">

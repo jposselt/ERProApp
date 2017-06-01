@@ -13,6 +13,9 @@ namespace ERProApp
     {
         private CollectionViewSource _books;
 
+        /// <summary>
+        /// Quelle fuer Databinding
+        /// </summary>
         public CollectionViewSource Books
         {
             get { return _books; }
@@ -23,8 +26,14 @@ namespace ERProApp
             }
         }
 
+        /// <summary>
+        /// Dient als Rueckgabewert des Suchfensters
+        /// </summary>
         public Book SelectedBook => ItemData.SelectedItem as Book;
 
+        /// <summary>
+        /// StandardKonstruktor
+        /// </summary>
         public ItemSearchView()
         {
             InitializeComponent();
@@ -64,9 +73,8 @@ namespace ERProApp
             _books.View.Refresh();
         }
 
-        /// <summary>
-        /// Eventhandler wenn der Benutzer auf "Ok" klickt
-        /// </summary>
+        
+        // Eventhandler wenn der Benutzer auf "Ok" klickt
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
             // Fenster schließen.
@@ -74,9 +82,8 @@ namespace ERProApp
             Close();
         }
 
-        /// <summary>
-        /// Eventhandler wenn der Benutzer auf "Abbrechen" klickt
-        /// </summary>
+      
+        // Eventhandler wenn der Benutzer auf "Abbrechen" klickt
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             // Fenster schließen.
@@ -84,9 +91,7 @@ namespace ERProApp
             Close();
         }
 
-        /// <summary>
-        /// Eventhandler wenn sich die Suchkatergorie geaendert hat
-        /// </summary>
+        // Eventhandler wenn sich die Suchkatergorie geaendert hat
         private void searchCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Funktioniert noch nicht richtig
@@ -97,6 +102,40 @@ namespace ERProApp
                 //_customers.View.Refresh();
             }
             */
+        }
+
+        // Eventhandler zum sperren eines Buchs
+        private void context_BlockItem(object sender, RoutedEventArgs e)
+        {
+            if (ItemData.SelectedItem != null)
+            {
+                (ItemData.SelectedItem as Book).Blocked = true;
+                (ItemData.SelectedItem as Book).Status = "gesperrt";
+                ItemData.InvalidateVisual();
+            }
+        }
+
+        // Eventhandler zum entsperren eines Buchs
+        private void context_UnblockItem(object sender, RoutedEventArgs e)
+        {
+            if (ItemData.SelectedItem != null)
+            {
+                (ItemData.SelectedItem as Book).Blocked = false;
+                if ((ItemData.SelectedItem as Book).ReservationCount > 0)
+                    (ItemData.SelectedItem as Book).Status = "reserviert";
+                else
+                    (ItemData.SelectedItem as Book).Status = "verfügbar";
+
+                foreach(Rental r in DataController.Rentals)
+                {
+                    if (r.ItemID == (ItemData.SelectedItem as Book).ID && !r.Reservation)
+                    {
+                        (ItemData.SelectedItem as Book).Status = "ausgeliehen";
+                    }
+                }
+
+                ItemData.InvalidateVisual();
+            }
         }
     }
 }

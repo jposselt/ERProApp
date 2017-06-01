@@ -190,6 +190,53 @@ namespace ERProApp
             }
         }
 
+        // Eventhandler zum sperren eines Buchs
+        private void dataGrid_BlockItem(object sender, RoutedEventArgs e)
+        {
+            if (RentalData.SelectedItem != null)
+            {
+                // Setze Feld
+                (RentalData.SelectedItem as Rental).Item.Blocked = true;
+
+                // Update Status
+                (RentalData.SelectedItem as Rental).Item.Status = "gesperrt";
+
+                // Aktualisiere Datagrid
+                RentalData.InvalidateVisual();
+            }
+        }
+
+        // Eventhandler zum entsperren eines Buchs
+        private void dataGrid_UnblockItem(object sender, RoutedEventArgs e)
+        {
+            if (RentalData.SelectedItem != null)
+            {
+                // Setze Feld
+                (RentalData.SelectedItem as Rental).Item.Blocked = false;
+
+                // Update Status
+                string id = (RentalData.SelectedItem as Rental).ItemID;
+                (RentalData.SelectedItem as Rental).Item.Status = "verfügbar";
+                foreach (DataGridRow dr in RentalData.Items)
+                {
+                    if ((dr.Item as Rental).ItemID == id)
+                    {
+                        if ((RentalData.SelectedItem as Rental).Item.Status == "verfügbar" && (RentalData.SelectedItem as Rental).Reservation)
+                        {
+                            (RentalData.SelectedItem as Rental).Item.Status = "reserviert";
+                        }
+                        else
+                        {
+                            (RentalData.SelectedItem as Rental).Item.Status = "ausgeliehen";
+                        }
+                    }
+                }
+
+                // Aktualisiere Datagrid
+                RentalData.InvalidateVisual();
+            }
+        }
+
         #endregion // Eventhandlers
 
     }
