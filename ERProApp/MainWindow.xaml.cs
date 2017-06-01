@@ -113,7 +113,7 @@ namespace ERProApp
             customerSearch.Owner = this;
             customerSearch.DataContext = _vc.Customers.View;
             customerSearch.Customers = _vc.Customers;
-            customerSearch.Show();
+            customerSearch.ShowDialog();
         }
 
         // Eventhandler zum Suche nach Büchern
@@ -123,7 +123,7 @@ namespace ERProApp
             itemSearch.Owner = this;
             itemSearch.DataContext = _vc.Books.View;
             itemSearch.Books = _vc.Books;
-            itemSearch.Show();
+            itemSearch.ShowDialog();
         }
 
         // Eventhandler zum Anlegen neuer Ausleihen/Reservierungen
