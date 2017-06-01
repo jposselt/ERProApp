@@ -75,13 +75,27 @@ namespace ERProApp
             }
         }
 
-        // Eventhandler zum Loeschen ueber das Kontextmenue
+        // Eventhandler zum Loeschen der ausgewaelten Ausleihe/Reservierung
         private void dataGrid_Delete(object sender, RoutedEventArgs e)
         {
-            // Dummy
+            if (RentalData.SelectedItem == null)
+            {
+                MessageBox.Show("Es wurde keine Ausleihe/Reservierung ausgewählt", "Keine Auswahl", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                if ((ViewController.DeleteImmediately) || (DeleteMessageBox.ShowDialog(this) == true))
+                {
+                    // Lösche die Ausleihe
+                    DataController.DeleteRental(RentalData.SelectedItem as Rental);
+
+                    // Aktualisiere Datagrid
+                    RentalData.InvalidateVisual();
+                }
+            }
         }
 
-        // Eventhandler zum umwandel einer Reservierung in eine Ausleihe ueber das Kontextmenue
+        // Eventhandler zum Umwandeln der ausgewaelten Reservierung in eine Ausleihe
         private void dataGrid_ReservationToRent(object sender, RoutedEventArgs e)
         {
             // Dummy
@@ -135,6 +149,7 @@ namespace ERProApp
             newRental.Books = _vc.Books;
             if (newRental.ShowDialog().Value)
             {
+                // Aktualisiere Datagrid
                 RentalData.InvalidateVisual();
             }
         }

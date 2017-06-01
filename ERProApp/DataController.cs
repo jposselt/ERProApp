@@ -69,11 +69,6 @@ namespace ERProApp
         /// </summary>
         public static ObservableCollection<Book> Books { get; set; }
 
-        /// <summary>
-        /// Gibt an ob eine Ausleihe/Rservierung sofort gelöscht werden soll oder ob erst eine Meldung angezeigt wird.
-        /// </summary>
-        public static bool DeleteRentalImmediately { get; set; }
-
         #endregion // Properties (Eigenschaften)
 
         #region Konstruktoren
@@ -102,7 +97,10 @@ namespace ERProApp
         public static void AddRental(Rental rental)
         {
             // Fuegt das Objekt zur Liste hinzu
-            Rentals.Add(rental);
+            if (rental != null)
+            {
+                Rentals.Add(rental);
+            }
         }
 
         /// <summary>
@@ -112,7 +110,10 @@ namespace ERProApp
         public static void DeleteRental(Rental rental)
         {
             // Entfernt das Objekt aus der Liste.
-            Rentals.Remove(rental);
+            if(rental != null)
+            {
+                Rentals.Remove(rental);
+            } 
         }
 
         /// <summary>

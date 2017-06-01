@@ -64,6 +64,10 @@
     </Compile>
     <Compile Include="DataController.cs" />
     <Compile Include="DayNameConverter.cs" />
+    <Compile Include="DeleteMessageBox.cs" />
+    <Compile Include="DeleteMessageBoxView.xaml.cs">
+      <DependentUpon>DeleteMessageBoxView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HighlightDatesConverter.cs" />
     <Compile Include="ItemInfoView.xaml.cs">
       <DependentUpon>ItemInfoView.xaml</DependentUpon>
@@ -90,6 +94,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomerSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeleteMessageBoxView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
