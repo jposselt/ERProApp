@@ -15,7 +15,7 @@ namespace ERProApp
     public partial class MainWindow : Window
     {
 
-        private ViewController vc;
+        private ViewController _vc;
 
         /// <summary>
         /// Standarkonstruktor
@@ -23,8 +23,8 @@ namespace ERProApp
         public MainWindow()
         {
             InitializeComponent();
-            vc = new ViewController();
-            this.DataContext = vc;
+            _vc = new ViewController();
+            this.DataContext = _vc;
         }
 
         #region Eventhandlers
@@ -101,7 +101,7 @@ namespace ERProApp
         {
             CustomerInfoView customerInfo = new CustomerInfoView();
             customerInfo.Owner = this;
-            customerInfo.Rentals = new CollectionViewSource() { Source = vc.Rentals.SourceCollection };
+            customerInfo.Rentals = new CollectionViewSource() { Source = _vc.Rentals.SourceCollection };
             customerInfo.SelectedCustomer = ((Rental)this.RentalData.SelectedItem).Taker;
             customerInfo.ShowDialog();
         }
@@ -111,8 +111,8 @@ namespace ERProApp
         {
             CustomerSearchView customerSearch = new CustomerSearchView();
             customerSearch.Owner = this;
-            customerSearch.DataContext = vc.Customers.View;
-            customerSearch.Customers = vc.Customers;
+            customerSearch.DataContext = _vc.Customers.View;
+            customerSearch.Customers = _vc.Customers;
             customerSearch.Show();
         }
 
@@ -121,9 +121,19 @@ namespace ERProApp
         {
             ItemSearchView itemSearch = new ItemSearchView();
             itemSearch.Owner = this;
-            itemSearch.DataContext = vc.Books.View;
-            itemSearch.Books = vc.Books;
+            itemSearch.DataContext = _vc.Books.View;
+            itemSearch.Books = _vc.Books;
             itemSearch.Show();
+        }
+
+        // Eventhandler zum Anlegen neuer Ausleihen/Reservierungen
+        private void button_NewRental(object sender, RoutedEventArgs e)
+        {
+            NewRentalDialogView newRental = new NewRentalDialogView();
+            newRental.Owner = this;
+            newRental.Customers = _vc.Customers;
+            newRental.Books = _vc.Books;
+            newRental.ShowDialog();
         }
 
         #endregion // Eventhandlers
