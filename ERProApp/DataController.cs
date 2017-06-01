@@ -308,7 +308,28 @@ namespace ERProApp
                     foreach(var item in Books)
                     {
                         if (item.ID.Equals(rental.ItemID))
+                        {
                             rental.Item = item;
+
+                            // Setzt Statusfeld
+                            if (rental.Reservation)
+                            {
+                                //item.ReservationCount += 1;
+                                if (item.Status == "verfügbar")
+                                {
+                                    item.Status = "reserviert";
+                                }
+                            }
+                            else
+                            {
+                                if (item.Status == "verfügbar" || item.Status == "reserviert")
+                                {
+                                    item.Status = "ausgeliehen";
+                                }
+                                
+                            }
+  
+                        }    
                     }
                 }
             }

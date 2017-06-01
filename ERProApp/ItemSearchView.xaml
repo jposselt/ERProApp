@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ERProApp"
         mc:Ignorable="d"
-        Title="ItemSearchView" Height="400" Width="550">
+        Title="ItemSearchView" Height="400" Width="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -67,7 +67,8 @@
                 <DataGridTextColumn Header="Titel" Binding="{Binding Title}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Autor" Binding="{Binding Author}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Genre" Binding="{Binding Genre}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Jahr" Binding="{Binding Year}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Jahr"  Binding="{Binding Year}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 

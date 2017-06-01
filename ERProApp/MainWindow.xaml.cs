@@ -1,11 +1,9 @@
-﻿using Microsoft.Windows.Controls.Primitives;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Media;
+
 
 namespace ERProApp
 {
@@ -86,6 +84,29 @@ namespace ERProApp
             {
                 if ((ViewController.DeleteImmediately) || (DeleteMessageBox.ShowDialog(this) == true))
                 {
+                    // Update des Buchstatus und des Reservierungszaehlers
+                    if((RentalData.SelectedItem as Rental).Reservation)
+                    {
+                        Book temp = (RentalData.SelectedItem as Rental).Item;
+                        temp.ReservationCount -= 1;
+                        if (temp.Status == "reserviert" && temp.ReservationCount == 0)
+                        {
+                            temp.Status = "verfügbar";
+                        }
+                    }
+                    else
+                    {
+                        Book temp = (RentalData.SelectedItem as Rental).Item;
+                        if (temp.Status == "ausgeliehen" && temp.ReservationCount == 0)
+                        {
+                            temp.Status = "verfügbar";
+                        }
+                        else
+                        {
+                            temp.Status = "reserviert";
+                        }
+                    }
+
                     // Lösche die Ausleihe
                     DataController.DeleteRental(RentalData.SelectedItem as Rental);
 
@@ -98,7 +119,22 @@ namespace ERProApp
         // Eventhandler zum Umwandeln der ausgewaelten Reservierung in eine Ausleihe
         private void dataGrid_ReservationToRent(object sender, RoutedEventArgs e)
         {
-            // Dummy
+            if (RentalData.SelectedItem != null)
+            {
+                // Reservation Feld setzen
+                (RentalData.SelectedItem as Rental).Reservation = false;
+
+                // Update des Buchstatus und des Reservierungszaehlers
+                Book temp = (RentalData.SelectedItem as Rental).Item;
+                temp.ReservationCount -= 1;
+                if (temp.Status == "reserviert" && temp.ReservationCount == 0)
+                {
+                    temp.Status = "verfügbar";
+                }
+
+                // Aktualisiere Datagrid
+                RentalData.InvalidateVisual();
+            }
         }
 
         // Eventhandler zum Anzeigen der detailierten Gegenstandsinformationen

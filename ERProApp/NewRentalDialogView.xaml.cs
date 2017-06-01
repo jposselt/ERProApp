@@ -14,18 +14,27 @@ namespace ERProApp
         private CollectionViewSource _customers;
         private CollectionViewSource _books;
 
+        /// <summary>
+        /// Buecherliste fuer Databinding
+        /// </summary>
         public CollectionViewSource Books
         {
             get { return _books; }
             set { _books = value; }
         }
 
+        /// <summary>
+        /// Kundenliste fuer Databinding
+        /// </summary>
         public CollectionViewSource Customers
         {
             get { return _customers; }
             set { _customers = value; }
         }
 
+        /// <summary>
+        /// Standardkonstruktor
+        /// </summary>
         public NewRentalDialogView()
         {
             InitializeComponent();
@@ -38,38 +47,57 @@ namespace ERProApp
         {
 
 
-            // Validiere Daten
+            // Validiere Kundendaten
             if(_selectedCustomer == null)
             {
                 // Nachricht: keine Daten
-                MessageBox.Show("Es wurde kein Kunde ausgewählt","Fehlende Daten", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Es wurde kein Kunde ausgewählt.","Fehlende Daten", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
 
+            // Validiere Buchdaten
             if (_selectedBook == null)
             {
                 // Nachricht: keine Daten
-                MessageBox.Show("Es wurde kein Buch ausgewählt", "Fehlende Daten", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Es wurde kein Buch ausgewählt.", "Fehlende Daten", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+            else if (_selectedBook.Blocked == true)
+            {
+                // Nachricht: Buch gesperrt
+                MessageBox.Show("Ausleihen für dieses Buch sind gesperrt.", "Ausleihe gesperrt", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
 
+            // Validiere Zeitraum
             if (StartDate.SelectedDate == null || EndDate.SelectedDate == null)
             {
                 // Nachricht: keine Daten
-                MessageBox.Show("Es wurde kein Start-/Enddatum ausgewählt", "Fehlende Daten", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Es wurde kein Start-/Enddatum ausgewählt.", "Fehlende Daten", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
             else {
                 if(DataController.TimeOverlapCheck(_selectedBook, StartDate.SelectedDate.Value, EndDate.SelectedDate.Value))
                 {
                     // Nachricht: Terminüberlappung
-                    MessageBox.Show("Der eingegebene Zeitraum überlappt mit einer anderen Ausleihe/Reservierung", "Terminüberlappung", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Der eingegebene Zeitraum überlappt mit einer anderen Ausleihe/Reservierung.", "Terminüberlappung", MessageBoxButton.OK, MessageBoxImage.Information);
                     return;
                 }
             }
 
             // Erstelle neu Ausleihe
             DataController.AddRental(new Rental(_selectedCustomer, _selectedBook, StartDate.SelectedDate.Value, EndDate.SelectedDate.Value, TypeReserv.IsChecked.Value));
+
+            // Update des Buchstatus
+            if (TypeReserv.IsChecked.Value)
+            {
+                _selectedBook.Status = "reserviert";
+                _selectedBook.ReservationCount += 1;
+            }
+            else
+            {
+                _selectedBook.Status = "ausgeliehen";
+            }
 
             // Fenster schließen.
             DialogResult = true;
