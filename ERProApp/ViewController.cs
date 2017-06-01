@@ -11,6 +11,7 @@ namespace ERProApp
     {
         private ListCollectionView _rentalData = new ListCollectionView(DataController.Rentals);
         private CollectionViewSource _customerSourceList = new CollectionViewSource() { Source = DataController.Customers };
+        private CollectionViewSource _itemSourceList = new CollectionViewSource() { Source = DataController.Books };
 
         public ListCollectionView Rentals
         {
@@ -20,6 +21,11 @@ namespace ERProApp
         public CollectionViewSource Customers
         {
             get { return _customerSourceList; }
+        }
+
+        public CollectionViewSource Books
+        {
+            get { return _itemSourceList; }
         }
 
         public ViewController()

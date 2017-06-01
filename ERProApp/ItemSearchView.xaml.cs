@@ -21,7 +21,7 @@ namespace ERProApp
     {
         private CollectionViewSource _books;
 
-        public CollectionViewSource Customers
+        public CollectionViewSource Books
         {
             get { return _books; }
             set
@@ -58,11 +58,7 @@ namespace ERProApp
 
             if (searchCategory.Text.Equals("Jahr"))
             {
-                int y;
-                if (Int32.TryParse(SearchBox.Text, out y))
-                {
-                    return book.Year.Equals(y);
-                }
+                return Convert.ToString(book.Year).Contains(SearchBox.Text);
             }
 
             return true;

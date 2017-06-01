@@ -116,6 +116,16 @@ namespace ERProApp
             customerSearch.Show();
         }
 
+        // Eventhandler zum Suche nach Büchern
+        private void button_SearchBook(object sender, RoutedEventArgs e)
+        {
+            ItemSearchView itemSearch = new ItemSearchView();
+            itemSearch.Owner = this;
+            itemSearch.DataContext = vc.Books.View;
+            itemSearch.Books = vc.Books;
+            itemSearch.Show();
+        }
+
         #endregion // Eventhandlers
 
     }

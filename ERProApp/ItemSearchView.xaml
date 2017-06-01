@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ERProApp"
         mc:Ignorable="d"
-        Title="ItemSearchView" Height="300" Width="300">
+        Title="ItemSearchView" Height="400" Width="550">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
