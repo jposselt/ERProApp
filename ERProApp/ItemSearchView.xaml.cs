@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-
+using System.Windows.Input;
 
 namespace ERProApp
 {
@@ -137,5 +137,88 @@ namespace ERProApp
                 ItemData.InvalidateVisual();
             }
         }
+
+        #region Commands
+
+        /// <summary>
+        /// Sperrt Ausleihen des ausgewaehlten Buchs
+        /// </summary>
+        public static readonly RoutedCommand Block = new RoutedCommand();
+
+        private void BlockCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (ItemData != null && ItemData.SelectedItem != null)
+            {
+                if ((ItemData.SelectedItem as Book).Blocked)
+                    e.CanExecute = false;
+                else
+                    e.CanExecute = true;
+            }
+            else
+                e.CanExecute = false;
+
+            e.Handled = true;
+        }
+
+        private void BlockExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (ItemData != null && ItemData.SelectedItem != null)
+            {
+                // Setze Feld
+                (ItemData.SelectedItem as Book).Blocked = true;
+
+                // Update Status
+                (ItemData.SelectedItem as Book).Status = "gesperrt";
+
+                // Update Window
+                ItemData.InvalidateVisual();
+            }
+            e.Handled = true;
+        }
+
+        /// <summary>
+        /// Entsperrt Ausleihen des ausgewaehlten Buchs
+        /// </summary>
+        public static readonly RoutedCommand Unblock = new RoutedCommand();
+
+        private void UnblockCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (ItemData != null && ItemData.SelectedItem != null)
+            {
+                if ((ItemData.SelectedItem as Book).Blocked)
+                    e.CanExecute = true;
+                else
+                    e.CanExecute = false;
+            }
+            else
+                e.CanExecute = false;
+
+            e.Handled = true;
+        }
+
+        private void UnblockExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (ItemData != null && ItemData.SelectedItem != null)
+            {
+                (ItemData.SelectedItem as Book).Blocked = false;
+                if ((ItemData.SelectedItem as Book).ReservationCount > 0)
+                    (ItemData.SelectedItem as Book).Status = "reserviert";
+                else
+                    (ItemData.SelectedItem as Book).Status = "verfügbar";
+
+                foreach (Rental r in DataController.Rentals)
+                {
+                    if (r.ItemID == (ItemData.SelectedItem as Book).ID && !r.Reservation)
+                    {
+                        (ItemData.SelectedItem as Book).Status = "ausgeliehen";
+                    }
+                }
+
+                ItemData.InvalidateVisual();
+            }
+            e.Handled = true;
+        }
+
+        #endregion
     }
 }

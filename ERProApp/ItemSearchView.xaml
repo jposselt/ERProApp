@@ -6,6 +6,19 @@
         xmlns:local="clr-namespace:ERProApp"
         mc:Ignorable="d"
         Title="Suche" Height="400" Width="600">
+
+    <!-- Kommandos für Bottons und Kontextmenü -->
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MainWindow.Block}" CanExecute="BlockCanExecute" Executed="BlockExecuted" />
+        <CommandBinding Command="{x:Static local:MainWindow.Unblock}" CanExecute="UnblockCanExecute" Executed="UnblockExecuted" />
+    </Window.CommandBindings>
+
+    <!-- Tastenkürzel für Kommandos -->
+    <Window.InputBindings>
+        <KeyBinding Key="S" Modifiers="Control" Command="{x:Static local:MainWindow.Block}"/>
+        <KeyBinding Key="E" Modifiers="Control" Command="{x:Static local:MainWindow.Unblock}"/>
+    </Window.InputBindings>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -73,12 +86,14 @@
 
             <DataGrid.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Gegenstand sperren"
-                                  Click="context_BlockItem">
+                    <MenuItem Header="Buch sperren"
+                                  Command="{x:Static local:MainWindow.Block}"
+                                  InputGestureText="Ctrl + S">
                         <!--<Image Width="12" Height="12" Source="" />-->
                     </MenuItem>
-                    <MenuItem Header="Gegenstand entsperren"
-                                  Click="context_UnblockItem">
+                    <MenuItem Header="Buch entsperren"
+                                  Command="{x:Static local:MainWindow.Unblock}"
+                                  InputGestureText="Ctrl + E">
                         <!--<Image Width="12" Height="12" Source="" />-->
                     </MenuItem>
                 </ContextMenu>

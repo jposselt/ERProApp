@@ -50,13 +50,13 @@
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
             <Button Margin="10" 
-                    Content="Suche Kunde"
+                    Content="Suche Kunde."
                     Command="{x:Static local:MainWindow.SearchCustomer}"
-                    ToolTip="Suche in Kunden"/>
+                    ToolTip="Suche in Kunden.  Tastenkürzel: Ctrl + Alt + K"/>
             <Button Margin="10"
                     Content="Suche Buch"
                     Command="{x:Static local:MainWindow.SearchBook}"
-                    ToolTip="Suche in Büchern"/>
+                    ToolTip="Suche in Büchern. Tastenkürzel: Ctrl + Alt + B"/>
             <Button Margin="10" 
                     Content="Neu"
                     Command="{x:Static local:MainWindow.NewRental}"
@@ -139,13 +139,13 @@
 
                         <Separator />
 
-                        <MenuItem Header="Gegenstand sperren"
+                        <MenuItem Header="Buch sperren"
                                   Command="{x:Static local:MainWindow.Block}"
                                   InputGestureText="Ctrl + S">
                             <!--<Image Width="12" Height="12" Source="" />-->
                         </MenuItem>
 
-                        <MenuItem Header="Gegenstand entsperren"
+                        <MenuItem Header="Buch entsperren"
                                   Command="{x:Static local:MainWindow.Unblock}"
                                   InputGestureText="Ctrl + E">
                             <!--<Image Width="12" Height="12" Source="" />-->
@@ -153,7 +153,7 @@
 
                         <Separator />
 
-                        <MenuItem Header="Gegenstand Info"
+                        <MenuItem Header="Buch Info"
                                   Command="{x:Static local:MainWindow.ItemInfo}"
                                   InputGestureText="Ctrl + B">
                             <!--<Image Width="12" Height="12" Source="" />-->
