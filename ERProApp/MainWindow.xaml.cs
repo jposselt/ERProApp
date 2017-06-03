@@ -156,40 +156,6 @@ namespace ERProApp
             customerInfo.ShowDialog();
         }
 
-        // Eventhandler zum Suche nach Kunden
-        private void button_SearchCustomer(object sender, RoutedEventArgs e)
-        {
-            CustomerSearchView customerSearch = new CustomerSearchView();
-            customerSearch.Owner = this;
-            customerSearch.DataContext = _vc.Customers.View;
-            customerSearch.Customers = _vc.Customers;
-            customerSearch.ShowDialog();
-        }
-
-        // Eventhandler zum Suche nach Büchern
-        private void button_SearchBook(object sender, RoutedEventArgs e)
-        {
-            ItemSearchView itemSearch = new ItemSearchView();
-            itemSearch.Owner = this;
-            itemSearch.DataContext = _vc.Books.View;
-            itemSearch.Books = _vc.Books;
-            itemSearch.ShowDialog();
-        }
-
-        // Eventhandler zum Anlegen neuer Ausleihen/Reservierungen
-        private void button_NewRental(object sender, RoutedEventArgs e)
-        {
-            NewRentalDialogView newRental = new NewRentalDialogView();
-            newRental.Owner = this;
-            newRental.Customers = _vc.Customers;
-            newRental.Books = _vc.Books;
-            if (newRental.ShowDialog().Value)
-            {
-                // Aktualisiere Datagrid
-                RentalData.InvalidateVisual();
-            }
-        }
-
         // Eventhandler zum sperren eines Buchs
         private void dataGrid_BlockItem(object sender, RoutedEventArgs e)
         {
@@ -235,6 +201,47 @@ namespace ERProApp
                 // Aktualisiere Datagrid
                 RentalData.InvalidateVisual();
             }
+        }
+
+        // Eventhandler zum Suche nach Kunden
+        private void button_SearchCustomer(object sender, RoutedEventArgs e)
+        {
+            CustomerSearchView customerSearch = new CustomerSearchView();
+            customerSearch.Owner = this;
+            customerSearch.DataContext = _vc.Customers.View;
+            customerSearch.Customers = _vc.Customers;
+            customerSearch.ShowDialog();
+        }
+
+        // Eventhandler zum Suche nach Büchern
+        private void button_SearchBook(object sender, RoutedEventArgs e)
+        {
+            ItemSearchView itemSearch = new ItemSearchView();
+            itemSearch.Owner = this;
+            itemSearch.DataContext = _vc.Books.View;
+            itemSearch.Books = _vc.Books;
+            itemSearch.ShowDialog();
+        }
+
+        // Eventhandler zum Anlegen neuer Ausleihen/Reservierungen
+        private void button_NewRental(object sender, RoutedEventArgs e)
+        {
+            NewRentalDialogView newRental = new NewRentalDialogView();
+            newRental.Owner = this;
+            newRental.Customers = _vc.Customers;
+            newRental.Books = _vc.Books;
+            if (newRental.ShowDialog().Value)
+            {
+                // Aktualisiere Datagrid
+                RentalData.InvalidateVisual();
+            }
+        }
+
+        // Eventhandler zum des About Fensters
+        private void button_ShowAbout(object sender, RoutedEventArgs e)
+        {
+            AboutView about = new AboutView();
+            about.ShowDialog();
         }
 
         #endregion // Eventhandlers

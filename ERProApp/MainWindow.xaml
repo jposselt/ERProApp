@@ -7,7 +7,7 @@
         xmlns:primitives="clr-namespace:Microsoft.Windows.Controls.Primitives;assembly=WPFToolkit"
         xmlns:local="clr-namespace:ERProApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525"
+        Title="ERPro" Height="350" Width="525"
         Closing="Window_Closing">
 
     <Window.Resources>
@@ -23,8 +23,9 @@
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
             <Button Margin="10" Click="button_SearchCustomer">Suche Kunde</Button>
             <Button Margin="10" Click="button_SearchBook">Suche Buch</Button>
-            <Button Margin="10" Click="button_NewRental" ToolTip="Neue Ausleihe oder Reservierung anlegen">_Neu</Button>
-            <Button Margin="10" Click="dataGrid_Delete">_Löschen</Button>
+            <Button Margin="10" Click="button_NewRental" ToolTip="Neue Ausleihe oder Reservierung anlegen">Neu</Button>
+            <Button Margin="10" Click="dataGrid_Delete">Löschen</Button>
+            <Button Margin="10" Content="Info" Click="button_ShowAbout"></Button>
         </StackPanel>
         <Grid>
             <Grid.ColumnDefinitions>

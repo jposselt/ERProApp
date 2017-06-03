@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("ERProApp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Jonas Posselt & Chris Schäpsmeier")]
 [assembly: AssemblyProduct("ERProApp")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
