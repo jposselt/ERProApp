@@ -19,19 +19,50 @@
         </ResourceDictionary>
     </Window.Resources>
 
+    <!-- Kommandos für Bottons und Kontextmenü -->
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MainWindow.About}" CanExecute="AboutCanExecute" Executed="AboutExecuted" />
+        <CommandBinding Command="{x:Static local:MainWindow.Checkout}" CanExecute="CheckoutCanExecute" Executed="CheckoutExecuted" />
+        <CommandBinding Command="{x:Static local:MainWindow.Block}" CanExecute="BlockCanExecute" Executed="BlockExecuted" />
+        <CommandBinding Command="{x:Static local:MainWindow.Unblock}" CanExecute="UnblockCanExecute" Executed="UnblockExecuted" />
+        <CommandBinding Command="{x:Static local:MainWindow.Delete}" CanExecute="DeleteCanExecute" Executed="DeleteExecuted" />
+        <CommandBinding Command="{x:Static local:MainWindow.ItemInfo}" CanExecute="ItemInfoCanExecute" Executed="ItemInfoExecuted" />
+        <CommandBinding Command="{x:Static local:MainWindow.CustomerInfo}" CanExecute="CustomerInfoCanExecute" Executed="CustomerInfoExecuted" />
+    </Window.CommandBindings>
+
+    <!-- Tastenkürzel für Kommandos -->
+    <Window.InputBindings>
+        <KeyBinding Key="I" Modifiers="Control" Command="{x:Static local:MainWindow.About}"/>
+        <KeyBinding Key="B" Modifiers="Control" Command="{x:Static local:MainWindow.ItemInfo}"/>
+        <KeyBinding Key="K" Modifiers="Control" Command="{x:Static local:MainWindow.CustomerInfo}"/>
+        <KeyBinding Key="S" Modifiers="Control" Command="{x:Static local:MainWindow.Block}"/>
+        <KeyBinding Key="E" Modifiers="Control" Command="{x:Static local:MainWindow.Unblock}"/>
+        <KeyBinding Key="D" Modifiers="Control" Command="{x:Static local:MainWindow.Delete}"/>
+        <KeyBinding Key="A" Modifiers="Control" Command="{x:Static local:MainWindow.Checkout}"/>
+    </Window.InputBindings>
+
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
             <Button Margin="10" Click="button_SearchCustomer">Suche Kunde</Button>
             <Button Margin="10" Click="button_SearchBook">Suche Buch</Button>
             <Button Margin="10" Click="button_NewRental" ToolTip="Neue Ausleihe oder Reservierung anlegen">Neu</Button>
-            <Button Margin="10" Click="dataGrid_Delete">Löschen</Button>
-            <Button Margin="10" Content="Info" Click="button_ShowAbout"></Button>
+            <Button Margin="10"
+                    Content="Löschen"
+                    Command="{x:Static local:MainWindow.Delete}"
+                    ToolTip="Löscht die ausgewählte Ausleihe/Reservierung. Tastenkürzel: Ctrl + D">
+            </Button>
+            <Button Margin="10"
+                    Content="Info"
+                    Command="{x:Static local:MainWindow.About}"
+                    ToolTip="Zeigt Informationen zum Programm an. Tastenkürzel: Ctrl + I">
+            </Button>
         </StackPanel>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="17*"/>
+                <ColumnDefinition Width="47*"/>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="64*"/>
             </Grid.ColumnDefinitions>
 
             <DataGrid ItemsSource="{Binding Rentals}"  Grid.Column="0"
@@ -42,7 +73,7 @@
                       CanUserReorderColumns="True" CanUserResizeColumns="True" 
                       CanUserResizeRows="False" CanUserSortColumns="True"
                       SelectionChanged="dataGrid_SelectionChanged"
-                      AlternatingRowBackground="Gainsboro"  AlternationCount="2">
+                      AlternatingRowBackground="Gainsboro"  AlternationCount="2" Grid.ColumnSpan="2">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Start" Binding="{Binding StartAsString}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Ende" Binding="{Binding EndAsString}"></DataGridTextColumn>
@@ -82,38 +113,54 @@
 
                 <DataGrid.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="Löschen" Click="dataGrid_Delete">
+                        <MenuItem Header="Löschen"
+                                  Command="{x:Static local:MainWindow.Delete}"
+                                  InputGestureText="Ctrl + D">
                             <!--<Image Width="12" Height="12" Source="Images/Delete.png" />-->
                         </MenuItem>
+
                         <MenuItem Header="Ausleihen"
-                                  Click="dataGrid_ReservationToRent">
-                            <!--<Image Width="12" Height="12" Source="" />-->
+                                  Command="{x:Static local:MainWindow.Checkout}"
+                                  InputGestureText="Ctrl + A">
                         </MenuItem>
+
+                        <Separator />
+
                         <MenuItem Header="Gegenstand sperren"
-                                  Click="dataGrid_BlockItem">
+                                  Command="{x:Static local:MainWindow.Block}"
+                                  InputGestureText="Ctrl + S">
                             <!--<Image Width="12" Height="12" Source="" />-->
                         </MenuItem>
+
                         <MenuItem Header="Gegenstand entsperren"
-                                  Click="dataGrid_UnblockItem">
+                                  Command="{x:Static local:MainWindow.Unblock}"
+                                  InputGestureText="Ctrl + E">
                             <!--<Image Width="12" Height="12" Source="" />-->
                         </MenuItem>
+
+                        <Separator />
+
                         <MenuItem Header="Gegenstand Info"
-                                  Click="dataGrid_ShowItemInfo">
+                                  Command="{x:Static local:MainWindow.ItemInfo}"
+                                  InputGestureText="Ctrl + B">
                             <!--<Image Width="12" Height="12" Source="" />-->
                         </MenuItem>
+
                         <MenuItem Header="Kunden Info"
-                                  Click="dataGrid_ShowCustomerInfo">
+                                  Command="{x:Static local:MainWindow.CustomerInfo}"
+                                  InputGestureText="Ctrl + K">
                             <!--<Image Width="12" Height="12" Source="" />-->
                         </MenuItem>
+
                     </ContextMenu>
                 </DataGrid.ContextMenu>
 
             </DataGrid>
             <GridSplitter HorizontalAlignment="Right" 
                   VerticalAlignment="Stretch" 
-                  Grid.Column="1" ResizeBehavior="PreviousAndNext"
+                  Grid.Column="2" ResizeBehavior="PreviousAndNext"
                   Width="5" Background="#FFBCBCBC"/>
-            <toolkit:Calendar Name="RentalCalendar" Grid.Column="2"/>
+            <toolkit:Calendar Name="RentalCalendar" Grid.Column="3"/>
         </Grid>
     </DockPanel>
 </Window>
