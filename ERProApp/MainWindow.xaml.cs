@@ -138,23 +138,23 @@ namespace ERProApp
         }*/
 
         // Eventhandler zum Anzeigen der detailierten Gegenstandsinformationen
-        private void dataGrid_ShowItemInfo(object sender, RoutedEventArgs e)
+        /*private void dataGrid_ShowItemInfo(object sender, RoutedEventArgs e)
         {
             ItemInfoView itemInfo = new ItemInfoView();
             itemInfo.Owner = this;
             itemInfo.DataContext = this.RentalData.SelectedItem;
             itemInfo.ShowDialog();
-        }
+        }*/
 
         // Eventhandler zum Anzeigen der detailierten Kundeninformationen
-        private void dataGrid_ShowCustomerInfo(object sender, RoutedEventArgs e)
+        /*private void dataGrid_ShowCustomerInfo(object sender, RoutedEventArgs e)
         {
             CustomerInfoView customerInfo = new CustomerInfoView();
             customerInfo.Owner = this;
             customerInfo.Rentals = new CollectionViewSource() { Source = _vc.Rentals.SourceCollection };
             customerInfo.SelectedCustomer = ((Rental)this.RentalData.SelectedItem).Taker;
             customerInfo.ShowDialog();
-        }
+        }*/
 
         // Eventhandler zum sperren eines Buchs
         /*private void dataGrid_BlockItem(object sender, RoutedEventArgs e)
@@ -204,27 +204,27 @@ namespace ERProApp
         }*/
 
         // Eventhandler zum Suche nach Kunden
-        private void button_SearchCustomer(object sender, RoutedEventArgs e)
+        /*private void button_SearchCustomer(object sender, RoutedEventArgs e)
         {
             CustomerSearchView customerSearch = new CustomerSearchView();
             customerSearch.Owner = this;
             customerSearch.DataContext = _vc.Customers.View;
             customerSearch.Customers = _vc.Customers;
             customerSearch.ShowDialog();
-        }
+        }*/
 
         // Eventhandler zum Suche nach Büchern
-        private void button_SearchBook(object sender, RoutedEventArgs e)
+        /*private void button_SearchBook(object sender, RoutedEventArgs e)
         {
             ItemSearchView itemSearch = new ItemSearchView();
             itemSearch.Owner = this;
             itemSearch.DataContext = _vc.Books.View;
             itemSearch.Books = _vc.Books;
             itemSearch.ShowDialog();
-        }
+        }*/
 
         // Eventhandler zum Anlegen neuer Ausleihen/Reservierungen
-        private void button_NewRental(object sender, RoutedEventArgs e)
+        /*private void button_NewRental(object sender, RoutedEventArgs e)
         {
             NewRentalDialogView newRental = new NewRentalDialogView();
             newRental.Owner = this;
@@ -235,7 +235,7 @@ namespace ERProApp
                 // Aktualisiere Datagrid
                 RentalData.InvalidateVisual();
             }
-        }
+        }*/
 
         // Eventhandler zum des About Fensters
         /*private void button_ShowAbout(object sender, RoutedEventArgs e)
@@ -247,6 +247,82 @@ namespace ERProApp
         #endregion // Eventhandlers
 
         #region Commands
+
+        /// <summary>
+        /// Suche nach Buechern
+        /// </summary>
+        public static readonly RoutedCommand SearchBook = new RoutedCommand();
+
+        private void SearchBookCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (_vc != null && _vc.Books != null)
+                e.CanExecute = true;
+            else
+                e.CanExecute = false;
+            e.Handled = true;
+        }
+
+        private void SearchBookExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            ItemSearchView itemSearch = new ItemSearchView();
+            itemSearch.Owner = this;
+            itemSearch.DataContext = _vc.Books.View;
+            itemSearch.Books = _vc.Books;
+            itemSearch.ShowDialog();
+            e.Handled = true;
+        }
+
+        /// <summary>
+        /// Suche nach Kunden
+        /// </summary>
+        public static readonly RoutedCommand SearchCustomer = new RoutedCommand();
+
+        private void SearchCustomerCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (_vc != null && _vc.Customers != null)
+                e.CanExecute = true;
+            else
+                e.CanExecute = false;
+            e.Handled = true;
+        }
+
+        private void SearchCustomerExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            CustomerSearchView customerSearch = new CustomerSearchView();
+            customerSearch.Owner = this;
+            customerSearch.DataContext = _vc.Customers.View;
+            customerSearch.Customers = _vc.Customers;
+            customerSearch.ShowDialog();
+            e.Handled = true;
+        }
+
+        /// <summary>
+        /// Neue Ausleihe erzeugen
+        /// </summary>
+        public static readonly RoutedCommand NewRental = new RoutedCommand();
+
+        private void NewRentalCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (RentalData != null)
+                e.CanExecute = true;
+            else
+                e.CanExecute = false;
+            e.Handled = true;
+        }
+
+        private void NewRentalExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            NewRentalDialogView newRental = new NewRentalDialogView();
+            newRental.Owner = this;
+            newRental.Customers = _vc.Customers;
+            newRental.Books = _vc.Books;
+            if (newRental.ShowDialog().Value)
+            {
+                // Aktualisiere Datagrid
+                _vc.Rentals.Refresh();
+            }
+            e.Handled = true;
+        }
 
         /// <summary>
         /// Anzeigen der detailierten Gegenstandsinformationen
