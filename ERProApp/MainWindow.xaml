@@ -53,14 +53,6 @@
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
             <Button Margin="10" 
-                    Content="Suche Kunde."
-                    Command="{x:Static local:MainWindow.SearchCustomer}"
-                    ToolTip="Suche in Kunden.  Tastenkürzel: Ctrl + Alt + K"/>
-            <Button Margin="10"
-                    Content="Suche Buch"
-                    Command="{x:Static local:MainWindow.SearchBook}"
-                    ToolTip="Suche in Büchern. Tastenkürzel: Ctrl + Alt + B"/>
-            <Button Margin="10" 
                     Content="Neu"
                     Command="{x:Static local:MainWindow.NewRental}"
                     ToolTip="Neue Ausleihe oder Reservierung anlegen. Tastenkürzel: Ctrl + N"/>
@@ -68,8 +60,16 @@
                     Content="Löschen"
                     Command="{x:Static local:MainWindow.Delete}"
                     ToolTip="Löscht die ausgewählte Ausleihe/Reservierung. Tastenkürzel: Ctrl + D"/>
+            <Button Margin="10" 
+                    Content="Suche Kunde"
+                    Command="{x:Static local:MainWindow.SearchCustomer}"
+                    ToolTip="Suche in Kunden.  Tastenkürzel: Ctrl + Alt + K"/>
             <Button Margin="10"
-                    Content="Info"
+                    Content="Suche Buch"
+                    Command="{x:Static local:MainWindow.SearchBook}"
+                    ToolTip="Suche in Büchern. Tastenkürzel: Ctrl + Alt + B"/>
+            <Button Margin="10"
+                    Content="Über"
                     Command="{x:Static local:MainWindow.About}"
                     ToolTip="Zeigt Informationen zum Programm an. Tastenkürzel: Ctrl + I"/>
         </StackPanel>
