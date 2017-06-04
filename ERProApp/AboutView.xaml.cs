@@ -3,18 +3,13 @@
 namespace ERProApp
 {
     /// <summary>
-    /// Interaction logic for AboutView.xaml
+    /// Interaktionslogik für AboutView.xaml
     /// </summary>
     public partial class AboutView : Window
     {
-        public AboutView()
-        {
-            InitializeComponent();
-        }
-
         public string Version
         {
-            get { return ApplicationInfo.Version;}
+            get { return ApplicationInfo.Version; }
         }
 
         public string Product
@@ -30,6 +25,11 @@ namespace ERProApp
         public string VersionCompany
         {
             get { return ApplicationInfo.Company; }
+        }
+
+        public AboutView()
+        {
+            InitializeComponent();
         }
 
         private void Grid_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)

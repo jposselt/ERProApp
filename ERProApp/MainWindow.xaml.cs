@@ -677,5 +677,10 @@ namespace ERProApp
         #endregion // Commands
 
 
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            var view = new AboutView();
+            view.Show();
+        }
     }
 }
