@@ -75,199 +75,199 @@
   <Book ID="433cfef4-05ea-4c8e-b2f9-03bc36c410e6">
     <Title>Krieg und Frieden</Title>
     <Author>Leo Tolstoi</Author>
-    <Genre>Epic</Genre>
+    <Genre>Historischer Roman</Genre>
     <Location>Regal 3</Location>
     <Status>verfuegbar</Status>
     <Year>1868</Year>
     <Blocked>false</Blocked>
   </Book>
   <Book ID="d22c3aea-7030-474c-8637-4f6dd656ac8a">
-    <Title>Irgendwas</Title>
-    <Author>Irgendwer</Author>
-    <Genre>Epic</Genre>
-    <Location>Regal 3</Location>
+    <Title>Unterleuten</Title>
+    <Author>Juli Zeh</Author>
+    <Genre>Roman</Genre>
+    <Location>Regal 2</Location>
     <Status>verfuegbar</Status>
-    <Year>2000</Year>
+    <Year>2016</Year>
     <Blocked>false</Blocked>
   </Book>
   <Book ID="83d5ed42-adf8-4f9b-8362-bf9298758dce">
-    <Title>Irgendwas</Title>
-    <Author>Irgendwer</Author>
-    <Genre>Epic</Genre>
-    <Location>Regal 3</Location>
+    <Title>Die Schattenschwester</Title>
+    <Author>Lucinda Riley</Author>
+    <Genre>Roman</Genre>
+    <Location>Regal 2</Location>
     <Status>verfuegbar</Status>
-    <Year>2000</Year>
+    <Year>2016</Year>
     <Blocked>false</Blocked>
   </Book>
   <Book ID="09438785-47ea-43bc-8642-2af1f54a2953">
-    <Title>Irgendwas</Title>
-    <Author>Irgendwer</Author>
-    <Genre>Epic</Genre>
-    <Location>Regal 3</Location>
+    <Title>Kämpfen</Title>
+    <Author>Karl Ove Knausgard</Author>
+    <Genre>Roman</Genre>
+    <Location>Regal 2</Location>
     <Status>verfuegbar</Status>
-    <Year>2000</Year>
+    <Year>2017</Year>
     <Blocked>false</Blocked>
   </Book>
   <Book ID="c8ead4dc-a227-4b64-bb02-6fb1f95f32e2">
-    <Title>Irgendwas</Title>
-    <Author>Irgendwer</Author>
-    <Genre>Epic</Genre>
-    <Location>Regal 3</Location>
+    <Title>Ein wenig Leben</Title>
+    <Author>Hanya Yanagihara</Author>
+    <Genre>Roman</Genre>
+    <Location>Regal 4</Location>
     <Status>verfuegbar</Status>
-    <Year>2000</Year>
+    <Year>2017</Year>
     <Blocked>false</Blocked>
   </Book>
   <Book ID="983d771b-3d8c-4e19-a563-199ec1087395">
-    <Title>Irgendwas</Title>
-    <Author>Irgendwer</Author>
-    <Genre>Epic</Genre>
+    <Title>Gott, hilf dem Kind</Title>
+    <Author>Toni Morrison</Author>
+    <Genre>Roman</Genre>
     <Location>Regal 3</Location>
     <Status>verfuegbar</Status>
-    <Year>2000</Year>
+    <Year>2017</Year>
     <Blocked>false</Blocked>
   </Book>
   <Book ID="5ef6d35f-cd52-4687-a9bc-ac49268fb847">
-    <Title>Irgendwas</Title>
-    <Author>Irgendwer</Author>
-    <Genre>Epic</Genre>
-    <Location>Regal 3</Location>
+    <Title>Bestechung</Title>
+    <Author>John Grisham</Author>
+    <Genre>Roman</Genre>
+    <Location>Regal 5</Location>
     <Status>verfuegbar</Status>
-    <Year>2000</Year>
+    <Year>2017</Year>
     <Blocked>false</Blocked>
   </Book>
   <Book ID="7b8599cd-383e-4139-a2dc-262d39e07edd">
-    <Title>Irgendwas</Title>
-    <Author>Irgendwer</Author>
-    <Genre>Epic</Genre>
+    <Title>Stille Wasser</Title>
+    <Author>Donna Leon</Author>
+    <Genre>Roman</Genre>
     <Location>Regal 3</Location>
     <Status>verfuegbar</Status>
-    <Year>2000</Year>
+    <Year>2017</Year>
     <Blocked>false</Blocked>
   </Book>
   <Book ID="a455f7db-a6cd-42fe-9c03-eb1484205fd1">
-    <Title>Irgendwas</Title>
-    <Author>Irgendwer</Author>
-    <Genre>Epic</Genre>
-    <Location>Regal 3</Location>
+    <Title>Schlafen werden wir später</Title>
+    <Author>Zsuzsa Bánk</Author>
+    <Genre>Roman</Genre>
+    <Location>Regal 5</Location>
     <Status>verfuegbar</Status>
-    <Year>2000</Year>
+    <Year>2017</Year>
     <Blocked>false</Blocked>
   </Book>
   <Book ID="3fdc6c47-a539-4f7e-9d4c-fa984f28a22e">
-    <Title>Irgendwas</Title>
-    <Author>Irgendwer</Author>
-    <Genre>Epic</Genre>
+    <Title>Das Paket</Title>
+    <Author>Sebastian Fitzek</Author>
+    <Genre>Psychothriller</Genre>
     <Location>Regal 3</Location>
     <Status>verfuegbar</Status>
-    <Year>2000</Year>
+    <Year>2016</Year>
     <Blocked>false</Blocked>
   </Book>
   <Book ID="2da4378e-dc97-46a3-a2ff-84ef2f14808f">
-    <Title>Irgendwas</Title>
-    <Author>Irgendwer</Author>
-    <Genre>Epic</Genre>
+    <Title>Sie kam aus Maiupol</Title>
+    <Author>Natascha Wodin</Author>
+    <Genre>Belletristik</Genre>
     <Location>Regal 3</Location>
     <Status>verfuegbar</Status>
-    <Year>2000</Year>
+    <Year>2017</Year>
     <Blocked>false</Blocked>
   </Book>
   <Book ID="f834a88a-c1e3-4217-bd9e-60decd69940a">
-    <Title>Irgendwas</Title>
-    <Author>Irgendwer</Author>
-    <Genre>Epic</Genre>
-    <Location>Regal 3</Location>
+    <Title>Die Geschichte eines neuen Namens</Title>
+    <Author>Elena Ferrante</Author>
+    <Genre>Roman</Genre>
+    <Location>Regal 4</Location>
     <Status>verfuegbar</Status>
-    <Year>2000</Year>
+    <Year>2017</Year>
     <Blocked>false</Blocked>
   </Book>
   <Book ID="4da89022-0510-4008-9c15-98314288b69c">
-    <Title>Irgendwas</Title>
-    <Author>Irgendwer</Author>
-    <Genre>Epic</Genre>
-    <Location>Regal 3</Location>
+    <Title>Der Lärm der Zeit</Title>
+    <Author>Julian Barnes</Author>
+    <Genre>Roman</Genre>
+    <Location>Regal 1</Location>
     <Status>verfuegbar</Status>
-    <Year>2000</Year>
+    <Year>2017</Year>
     <Blocked>false</Blocked>
   </Book>
   <Book ID="c8cdaba8-f1a8-43f7-b293-0a496646608d">
-    <Title>Irgendwas</Title>
-    <Author>Irgendwer</Author>
-    <Genre>Epic</Genre>
-    <Location>Regal 3</Location>
+    <Title>Elefant</Title>
+    <Author>Martin Suter</Author>
+    <Genre>Roman</Genre>
+    <Location>Regal 4</Location>
     <Status>verfuegbar</Status>
     <Year>2000</Year>
     <Blocked>false</Blocked>
   </Book>
   <Book ID="7c4835e5-32e0-4933-a2d3-2c40979c3adb">
-    <Title>Irgendwas</Title>
-    <Author>Irgendwer</Author>
-    <Genre>Epic</Genre>
-    <Location>Regal 3</Location>
+    <Title>Das Labyrinth der Lichter</Title>
+    <Author>Carlos Ruiz Zafón</Author>
+    <Genre>Roman</Genre>
+    <Location>Regal 4</Location>
     <Status>verfuegbar</Status>
-    <Year>2000</Year>
+    <Year>2017</Year>
     <Blocked>false</Blocked>
   </Book>
   <Book ID="57eae055-b15e-4fbf-9f56-5c99fb764cca">
-    <Title>Irgendwas</Title>
-    <Author>Irgendwer</Author>
-    <Genre>Epic</Genre>
-    <Location>Regal 3</Location>
+    <Title>Meine geniale Freundin</Title>
+    <Author>Elena Ferrante</Author>
+    <Genre>Jugendroman</Genre>
+    <Location>Regal 1</Location>
     <Status>verfuegbar</Status>
-    <Year>2000</Year>
+    <Year>2016</Year>
     <Blocked>false</Blocked>
   </Book>
   <Book ID="5ccf4c96-abbd-44e5-8df7-d7e04424791c">
-    <Title>Irgendwas</Title>
-    <Author>Irgendwer</Author>
-    <Genre>Epic</Genre>
+    <Title>Grand Prix</Title>
+    <Author>Martin Walker</Author>
+    <Genre>Roman</Genre>
     <Location>Regal 3</Location>
     <Status>verfuegbar</Status>
-    <Year>2000</Year>
+    <Year>2017</Year>
     <Blocked>false</Blocked>
   </Book>
   <Book ID="a27adac2-cc1d-43b4-bbda-1ca890e144a9">
-    <Title>Irgendwas</Title>
-    <Author>Irgendwer</Author>
-    <Genre>Epic</Genre>
+    <Title>Der grosse Polt - Ein Konversationslexikon</Title>
+    <Author>Gerhard Polt</Author>
+    <Genre>Sachbuch</Genre>
     <Location>Regal 3</Location>
     <Status>verfuegbar</Status>
-    <Year>2000</Year>
+    <Year>2017</Year>
     <Blocked>false</Blocked>
   </Book>
   <Book ID="880ae6f1-7434-44b4-b10a-38f70aa93863">
-    <Title>Irgendwas</Title>
-    <Author>Irgendwer</Author>
-    <Genre>Epic</Genre>
-    <Location>Regal 3</Location>
+    <Title>Die fremde Königin</Title>
+    <Author>Rebecca Gablé</Author>
+    <Genre>Historischer Roman</Genre>
+    <Location>Regal 1</Location>
     <Status>verfuegbar</Status>
-    <Year>2000</Year>
+    <Year>2017</Year>
     <Blocked>false</Blocked>
   </Book>
   <Book ID="556f1d61-1b49-4fc6-aef7-9b9587e38baf">
-    <Title>Irgendwas</Title>
-    <Author>Irgendwer</Author>
-    <Genre>Epic</Genre>
-    <Location>Regal 3</Location>
+    <Title>Selfies</Title>
+    <Author>Jussi Adler-Olsen</Author>
+    <Genre>Thriller</Genre>
+    <Location>Regal 2</Location>
     <Status>verfuegbar</Status>
-    <Year>2000</Year>
+    <Year>2017</Year>
     <Blocked>false</Blocked>
   </Book>
   <Book ID="002e516d-2f90-4b26-acfc-972fe383d730">
-    <Title>Irgendwas</Title>
-    <Author>Irgendwer</Author>
-    <Genre>Epic</Genre>
-    <Location>Regal 3</Location>
+    <Title>Die Geschichte der Bienen</Title>
+    <Author>Maja Lunde</Author>
+    <Genre>Roman</Genre>
+    <Location>Regal 1</Location>
     <Status>verfuegbar</Status>
-    <Year>2000</Year>
+    <Year>2017</Year>
     <Blocked>false</Blocked>
   </Book>
   <Book ID="7c64c3ba-fda0-4e8a-aca3-d595046d3170">
-    <Title>Irgendwas</Title>
-    <Author>Irgendwer</Author>
-    <Genre>Epic</Genre>
-    <Location>Regal 3</Location>
+    <Title>Wer der Herde folgt, sieht nur Ärsche</Title>
+    <Author>Hannes Janicke</Author>
+    <Genre>Sachbuch</Genre>
+    <Location>Regal 2</Location>
     <Status>verfuegbar</Status>
-    <Year>2000</Year>
+    <Year>2017</Year>
     <Blocked>false</Blocked>
   </Book>
 </Books>

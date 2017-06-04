@@ -239,5 +239,10 @@ namespace ERProApp
 
         #endregion // Eventhandlers
 
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            var view = new AboutView();
+            view.Show();
+        }
     }
 }
