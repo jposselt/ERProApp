@@ -28,6 +28,7 @@ namespace ERProApp
 
         public CustomerInfoView()
         {
+            App.Log.Debug("Initialisiere Kundeninformationsfenster");
             InitializeComponent();
         }
 

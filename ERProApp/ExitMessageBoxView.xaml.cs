@@ -14,6 +14,7 @@ namespace ERProApp
         /// </summary>
         public ExitMessageBoxView()
         {
+            App.Log.Debug("Initialisiere Exitdialog");
             InitializeComponent();
             btnCancel.Focus();
         }
@@ -43,6 +44,8 @@ namespace ERProApp
         /// </summary>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
+            App.Log.Debug("Beenden abgebrochen");
+
             // DialogResult setzen
             DialogResult = false;
 

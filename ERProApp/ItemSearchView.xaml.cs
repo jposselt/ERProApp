@@ -36,6 +36,7 @@ namespace ERProApp
         /// </summary>
         public ItemSearchView()
         {
+            App.Log.Debug("Initialisiere Buchsuchefenster");
             InitializeComponent();
         }
 
@@ -73,7 +74,6 @@ namespace ERProApp
             _books.View.Refresh();
         }
 
-        
         // Eventhandler wenn der Benutzer auf "Ok" klickt
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
@@ -82,7 +82,6 @@ namespace ERProApp
             Close();
         }
 
-      
         // Eventhandler wenn der Benutzer auf "Abbrechen" klickt
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
@@ -174,6 +173,7 @@ namespace ERProApp
                 ItemData.InvalidateVisual();
             }
             e.Handled = true;
+            App.Log.Debug("Buch gesperrt");
         }
 
         /// <summary>
@@ -217,6 +217,7 @@ namespace ERProApp
                 ItemData.InvalidateVisual();
             }
             e.Handled = true;
+            App.Log.Debug("Buch entsperrt");
         }
 
         #endregion

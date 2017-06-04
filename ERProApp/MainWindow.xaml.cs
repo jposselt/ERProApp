@@ -20,6 +20,7 @@ namespace ERProApp
         /// </summary>
         public MainWindow()
         {
+            App.Log.Debug("Öffne Hauptfenster");
             InitializeComponent();
             _vc = new ViewController();
             this.DataContext = _vc;
@@ -30,6 +31,7 @@ namespace ERProApp
         // Eventhandler wenn das Fenster geschlossen wird
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            App.Log.Debug("Schliesse Hauptfenster");
             var result = ExitMessageBox.ShowDialog();
             if (result == false) { e.Cancel = true; }
         }
@@ -264,6 +266,7 @@ namespace ERProApp
 
         private void SearchBookExecuted(object sender, ExecutedRoutedEventArgs e)
         {
+            App.Log.Debug("Öffne Suchfenster für Bücher");
             ItemSearchView itemSearch = new ItemSearchView();
             itemSearch.Owner = this;
             itemSearch.DataContext = _vc.Books.View;
@@ -288,6 +291,7 @@ namespace ERProApp
 
         private void SearchCustomerExecuted(object sender, ExecutedRoutedEventArgs e)
         {
+            App.Log.Debug("Öffne Suchfenster für Kunden");
             CustomerSearchView customerSearch = new CustomerSearchView();
             customerSearch.Owner = this;
             customerSearch.DataContext = _vc.Customers.View;
@@ -312,6 +316,7 @@ namespace ERProApp
 
         private void NewRentalExecuted(object sender, ExecutedRoutedEventArgs e)
         {
+            App.Log.Debug("Öffne Fenster für neue Ausleihe");
             NewRentalDialogView newRental = new NewRentalDialogView();
             newRental.Owner = this;
             newRental.Customers = _vc.Customers;
@@ -340,6 +345,7 @@ namespace ERProApp
 
         private void ItemInfoExecuted(object sender, ExecutedRoutedEventArgs e)
         {
+            App.Log.Debug("Öffne Fenster für Buchinfo");
             ItemInfoView itemInfo = new ItemInfoView();
             itemInfo.Owner = this;
             itemInfo.DataContext = this.RentalData.SelectedItem;
@@ -363,6 +369,7 @@ namespace ERProApp
 
         private void CustomerInfoExecuted(object sender, ExecutedRoutedEventArgs e)
         {
+            App.Log.Debug("Öffne Fenster für Kundeninfo");
             CustomerInfoView customerInfo = new CustomerInfoView();
             customerInfo.Owner = this;
             customerInfo.Rentals = new CollectionViewSource() { Source = _vc.Rentals.SourceCollection };
@@ -387,6 +394,8 @@ namespace ERProApp
 
         private void DeleteExecuted(object sender, ExecutedRoutedEventArgs e)
         {
+            App.Log.Debug("Löschen ausführen");
+
             if (RentalData.SelectedItem == null)
             {
                 MessageBox.Show("Es wurde keine Ausleihe/Reservierung ausgewählt", "Keine Auswahl", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -442,6 +451,7 @@ namespace ERProApp
 
         private void AboutExecuted(object sender, ExecutedRoutedEventArgs e)
         {
+            App.Log.Debug("Öffne 'Über' Fenster");
             AboutView about = new AboutView();
             about.ShowDialog();
             e.Handled = true;
@@ -470,6 +480,8 @@ namespace ERProApp
 
         private void CheckoutExecuted(object sender, ExecutedRoutedEventArgs e)
         {
+            App.Log.Debug("Reservierung ausleihen");
+
             if (RentalData.SelectedItem != null)
             {
                 // Reservation Feld setzen
@@ -522,6 +534,7 @@ namespace ERProApp
                 (RentalData.SelectedItem as Rental).Item.Status = "gesperrt";
             }
             e.Handled = true;
+            App.Log.Info("Buch gesperrt");
         }
 
         /// <summary>
@@ -567,6 +580,7 @@ namespace ERProApp
                 }
             }
             e.Handled = true;
+            App.Log.Info("Buch entsperrt");
         }
 
         #endregion // Commands

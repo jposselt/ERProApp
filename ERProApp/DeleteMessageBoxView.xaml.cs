@@ -29,6 +29,7 @@ namespace ERProApp
         /// </summary>
         public DeleteMessageBoxView()
         {
+            App.Log.Debug("Initialisiere Löschdialog");
             InitializeComponent();
             btnCancel.Focus();
         }
@@ -50,6 +51,8 @@ namespace ERProApp
         /// </summary>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
+            App.Log.Debug("Löschen abgebrochen");
+
             // DialogResult setzen
             DialogResult = false;
 

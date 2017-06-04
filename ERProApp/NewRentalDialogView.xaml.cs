@@ -37,6 +37,7 @@ namespace ERProApp
         /// </summary>
         public NewRentalDialogView()
         {
+            App.Log.Debug("Initialisiere Dialog für neue Ausleihe");
             InitializeComponent();
         }
 
@@ -45,7 +46,6 @@ namespace ERProApp
         /// </summary>
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-
 
             // Validiere Kundendaten
             if(_selectedCustomer == null)
@@ -110,6 +110,7 @@ namespace ERProApp
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             // Fenster schließen.
+            App.Log.Debug("Dialog für neue Ausleihe abgebrochen");
             DialogResult = false;
             Close();
         }

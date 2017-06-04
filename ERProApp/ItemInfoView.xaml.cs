@@ -21,6 +21,7 @@ namespace ERProApp
     {
         public ItemInfoView()
         {
+            App.Log.Debug("Initialisiere Buchinformationsfenster");
             InitializeComponent();
         }
 

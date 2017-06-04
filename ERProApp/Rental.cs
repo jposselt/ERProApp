@@ -204,6 +204,8 @@ namespace ERProApp
 
             _reservation = reservation;
             _overdue = false;
+
+            App.Log.Debug("Neue Ausleihe erzeugt");
         }
 
         #endregion // Konstruktoren

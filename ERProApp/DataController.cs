@@ -78,6 +78,7 @@ namespace ERProApp
         /// </summary>
         static DataController()
         {
+            App.Log.Debug("Lege Datenstrukturen an");
             if (Customers == null)
                 Customers = new ObservableCollection<Customer>();
             if (Books == null)
@@ -100,6 +101,7 @@ namespace ERProApp
             if (rental != null)
             {
                 Rentals.Add(rental);
+                App.Log.Info("Neue Ausleihe hinzugefügt");
             }
         }
 
@@ -113,6 +115,7 @@ namespace ERProApp
             if(rental != null)
             {
                 Rentals.Remove(rental);
+                App.Log.Info("Ausleihe gelöscht");
             } 
         }
 
@@ -123,17 +126,23 @@ namespace ERProApp
         /// <returns></returns>
         public static void LoadCustomersFromFile(string filename)
         {
+            App.Log.Info("Lade Kunden");
+
             // Prüfen ob die Datei Exisitiert.
             if (!File.Exists(filename))
             {
-                // Keine Kunden gefunden.             
+                // Keine Kunden gefunden.
+                App.Log.Warn("Keine Kunden gefunden");
                 return;
             }
 
             try
             {
+                App.Log.Info("Lade Kunden aus Datei");
+
                 // ein XmlSerializer initialisieren.
                 XmlSerializer deserializer = new XmlSerializer(typeof(ObservableCollection<Customer>), CustomersXmlRoot);
+                App.Log.Debug("XmlSerializer initialisiert");
 
                 // Objekt zum einlesen initialisieren
                 using (var reader = new StreamReader(filename))
@@ -143,10 +152,12 @@ namespace ERProApp
                     // ergebnis casten.
                     Customers = (obj as ObservableCollection<Customer>);
                 }
+                App.Log.Info("Kunden geladen");
             }
             catch (Exception e) // Um eventuelle Fehler zu vermeiden.
             {
                 // Dem Benutzer eine Fehlermeldung anzeigen falls es zu einer Exception kommt.
+                App.Log.Error("Fehler beim Laden der Kunden");
                 string message = string.Format("Beim Laden der Kunden ist ein Fehler aufgetreten.{0}{0}{1}", Environment.NewLine, e.Message); // TODO: lokalisieren
                 MessageBox.Show(message, "Fehler", MessageBoxButton.OK);                                                                      // TODO: lokalisieren
             }
@@ -158,12 +169,15 @@ namespace ERProApp
         /// <param name="filename">Name der Zieldatei incl. oder excl. Dateipfad</param>
         public static void SaveCustomersToFile(string filename)
         {
+            App.Log.Info("Speichere Kunden");
+
             if (Customers.Any())
             {
                 try
                 {
                     // ein XmlSerializer initialisieren.
                     XmlSerializer serializer = new XmlSerializer(typeof(List<Customer>), CustomersXmlRoot);
+                    App.Log.Debug("XmlSerializer initialisiert");
 
                     // Objekt zum schreiben initialisieren
                     using (var writer = new StreamWriter(filename))
@@ -175,16 +189,19 @@ namespace ERProApp
                         // serialisierer starten.
                         serializer.Serialize(writer, Customers.ToList(), ns);
                     }
+                    App.Log.Info("Kunden gespeichert");
                 }
                 catch (Exception e) // Um eventuelle Fehler zu vermeiden.
                 {
                     // Dem Benutzer eine Fehlermeldung anzeigen falls es zu einer Exception kommt.
+                    App.Log.Error("Fehler beim Speichern der Kunden");
                     string message = string.Format("Beim Speichern der Kunden ist ein Fehler aufgetreten.{0}{0}{1}", Environment.NewLine, e.Message); // TODO: lokalisieren
                     MessageBox.Show(message, "Fehler", MessageBoxButton.OK);                                                                          // TODO: lokalisieren
                 }
             }
             else
             {
+                App.Log.Info("Keine Kunden vorhanden");
                 if (File.Exists(filename))
                 {
                     File.Delete(filename);
@@ -199,17 +216,23 @@ namespace ERProApp
         /// <returns></returns>
         public static void LoadBooksFromFile(string filename)
         {
+            App.Log.Info("Lade Bücher");
+
             // Prüfen ob die Datei Exisitiert.
             if (!File.Exists(filename))
             {
-                // Keine Kunden gefunden.             
+                // Keine Kunden gefunden.
+                App.Log.Warn("Keine Bücher gefunden");
                 return;
             }
 
             try
             {
+                App.Log.Info("Lade Bücher aus Datei");
+
                 // ein XmlSerializer initialisieren.
                 XmlSerializer deserializer = new XmlSerializer(typeof(ObservableCollection<Book>), BooksXmlRoot);
+                App.Log.Debug("XmlSerializer initialisiert");
 
                 // Objekt zum einlesen initialisieren
                 using (var reader = new StreamReader(filename))
@@ -223,6 +246,7 @@ namespace ERProApp
             catch (Exception e) // Um eventuelle Fehler zu vermeiden.
             {
                 // Dem Benutzer eine Fehlermeldung anzeigen falls es zu einer Exception kommt.
+                App.Log.Error("Fehler beim Laden der Bücher");
                 string message = string.Format("Beim Laden der Bücher ist ein Fehler aufgetreten.{0}{0}{1}", Environment.NewLine, e.Message); // TODO: lokalisieren
                 MessageBox.Show(message, "Fehler", MessageBoxButton.OK);                                                                      // TODO: lokalisieren
             }
@@ -234,12 +258,15 @@ namespace ERProApp
         /// <param name="filename">Name der Zieldatei incl. oder excl. Dateipfad</param>
         public static void SaveBooksToFile(string filename)
         {
+            App.Log.Info("Speichere Bücher");
+
             if (Customers.Any())
             {
                 try
                 {
                     // ein XmlSerializer initialisieren.
                     XmlSerializer serializer = new XmlSerializer(typeof(List<Book>), BooksXmlRoot);
+                    App.Log.Debug("XmlSerializer initialisiert");
 
                     // Objekt zum schreiben initialisieren
                     using (var writer = new StreamWriter(filename))
@@ -255,12 +282,14 @@ namespace ERProApp
                 catch (Exception e) // Um eventuelle Fehler zu vermeiden.
                 {
                     // Dem Benutzer eine Fehlermeldung anzeigen falls es zu einer Exception kommt.
+                    App.Log.Error("Fehler beim Speichern der Bücher");
                     string message = string.Format("Beim Speichern der Bücher ist ein Fehler aufgetreten.{0}{0}{1}", Environment.NewLine, e.Message); // TODO: lokalisieren
                     MessageBox.Show(message, "Fehler", MessageBoxButton.OK);                                                                          // TODO: lokalisieren
                 }
             }
             else
             {
+                App.Log.Info("Keine Bücher vorhanden");
                 if (File.Exists(filename))
                 {
                     File.Delete(filename);
@@ -275,15 +304,20 @@ namespace ERProApp
         /// <returns></returns>
         public static void LoadRentalsFromFile(string filename)
         {
+            App.Log.Info("Lade Ausleihen");
+
             // Prüfen ob die Datei Exisitiert.
             if (!File.Exists(filename))
             {
-                // Keine Kunden gefunden.             
+                // Keine Kunden gefunden.
+                App.Log.Warn("Keine Ausleihen gefunden");
                 return;
             }
 
             try
             {
+                App.Log.Info("Lese Ausleihen aus Datei");
+
                 // ein XmlSerializer initialisieren.
                 XmlSerializer deserializer = new XmlSerializer(typeof(ObservableCollection<Rental>), RentalsXmlRoot);
 
@@ -296,7 +330,9 @@ namespace ERProApp
                     Rentals = (obj as ObservableCollection<Rental>);
                 }
 
+
                 // Assoziere Ausleihen mit Kunden- und Buch-Objekten
+                App.Log.Info("Assoziiere Ausleihen mit Kunden und Büchern");
                 foreach (var rental in Rentals)
                 {
                     foreach(var customer in Customers)
@@ -336,6 +372,7 @@ namespace ERProApp
             catch (Exception e) // Um eventuelle Fehler zu vermeiden.
             {
                 // Dem Benutzer eine Fehlermeldung anzeigen falls es zu einer Exception kommt.
+                App.Log.Error("Fehler beim Laden der Ausleihen");
                 string message = string.Format("Beim Laden der Ausleihen ist ein Fehler aufgetreten.{0}{0}{1}", Environment.NewLine, e.Message); // TODO: lokalisieren
                 MessageBox.Show(message, "Fehler", MessageBoxButton.OK);                                                                         // TODO: lokalisieren
             }
@@ -347,12 +384,14 @@ namespace ERProApp
         /// <param name="filename">Name der Zieldatei incl. oder excl. Dateipfad</param>
         public static void SaveRentalsToFile(string filename)
         {
+            App.Log.Info("Speichere Ausleihen");
             if (Customers.Any())
             {
                 try
                 {
                     // ein XmlSerializer initialisieren.
                     XmlSerializer serializer = new XmlSerializer(typeof(List<Rental>), RentalsXmlRoot);
+                    App.Log.Debug("XmlSerializer initialisiert");
 
                     // Objekt zum schreiben initialisieren
                     using (var writer = new StreamWriter(filename))
@@ -368,12 +407,14 @@ namespace ERProApp
                 catch (Exception e) // Um eventuelle Fehler zu vermeiden.
                 {
                     // Dem Benutzer eine Fehlermeldung anzeigen falls es zu einer Exception kommt.
+                    App.Log.Error("Fehler beim Speichern der Ausleihen");
                     string message = string.Format("Beim Speichern der Ausleihen ist ein Fehler aufgetreten.{0}{0}{1}", Environment.NewLine, e.Message); // TODO: lokalisieren
                     MessageBox.Show(message, "Fehler", MessageBoxButton.OK);                                                                             // TODO: lokalisieren
                 }
             }
             else
             {
+                App.Log.Info("Keine Ausleihen vorhanden");
                 if (File.Exists(filename))
                 {
                     File.Delete(filename);
@@ -386,6 +427,7 @@ namespace ERProApp
         /// </summary>
         public static void SaveDataToFiles()
         {
+            App.Log.Info("Speichere Daten");
             SaveRentalsToFile(RentalFile);
             SaveBooksToFile(BookFile);
             SaveCustomersToFile(CustomerFile);
@@ -396,6 +438,7 @@ namespace ERProApp
         /// </summary>
         public static void LoadDataFromFiles()
         {
+            App.Log.Info("Lade Daten");
             LoadCustomersFromFile(CustomerFile);
             LoadBooksFromFile(BookFile);
             LoadRentalsFromFile(RentalFile);
@@ -410,6 +453,8 @@ namespace ERProApp
         /// <returns></returns>
         public static bool TimeOverlapCheck(Book item, DateTime start, DateTime end)
         {
+            App.Log.Debug("TimeOverlapCheck aufgerufen");
+
             // Hilfsvariable
             bool overlap = false;
 

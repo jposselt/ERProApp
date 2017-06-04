@@ -26,6 +26,7 @@ namespace ERProApp
 
         public CustomerSearchView()
         {
+            App.Log.Debug("Initialisiere Kundensuchfenster");
             InitializeComponent();
         }
 
