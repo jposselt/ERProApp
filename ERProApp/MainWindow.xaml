@@ -31,6 +31,7 @@
         <CommandBinding Command="{x:Static local:MainWindow.NewRental}" CanExecute="NewRentalCanExecute" Executed="NewRentalExecuted" />
         <CommandBinding Command="{x:Static local:MainWindow.SearchBook}" CanExecute="SearchBookCanExecute" Executed="SearchBookExecuted" />
         <CommandBinding Command="{x:Static local:MainWindow.SearchCustomer}" CanExecute="SearchCustomerCanExecute" Executed="SearchCustomerExecuted" />
+        <CommandBinding Command="{x:Static local:MainWindow.PrintTicket}" CanExecute="PrintTicketCanExecute" Executed="PrintTicketExecuted" />
     </Window.CommandBindings>
 
     <!-- Tastenkürzel für Kommandos -->
@@ -43,8 +44,10 @@
         <KeyBinding Key="D" Modifiers="Control" Command="{x:Static local:MainWindow.Delete}"/>
         <KeyBinding Key="A" Modifiers="Control" Command="{x:Static local:MainWindow.Checkout}"/>
         <KeyBinding Key="N" Modifiers="Control" Command="{x:Static local:MainWindow.NewRental}"/>
+        <KeyBinding Key="L" Modifiers="Control" Command="{x:Static local:MainWindow.PrintTicket}"/>
         <KeyBinding Key="B" Modifiers="Control+Alt" Command="{x:Static local:MainWindow.SearchBook}"/>
         <KeyBinding Key="K" Modifiers="Control+Alt" Command="{x:Static local:MainWindow.SearchCustomer}"/>
+        
     </Window.InputBindings>
 
     <DockPanel>
@@ -135,6 +138,11 @@
                         <MenuItem Header="Ausleihen"
                                   Command="{x:Static local:MainWindow.Checkout}"
                                   InputGestureText="Ctrl + A">
+                        </MenuItem>
+
+                        <MenuItem Header="Leihschein"
+                                  Command="{x:Static local:MainWindow.PrintTicket}"
+                                  InputGestureText="Ctrl + L">
                         </MenuItem>
 
                         <Separator />

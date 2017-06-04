@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace ERProApp
@@ -581,6 +582,96 @@ namespace ERProApp
             }
             e.Handled = true;
             App.Log.Info("Buch entsperrt");
+        }
+
+        /// <summary>
+        /// Leihschein erstellen/drucken
+        /// </summary>
+        public static readonly RoutedCommand PrintTicket = new RoutedCommand();
+
+        private void PrintTicketCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (RentalData != null && RentalData.SelectedItem != null)
+            {
+                e.CanExecute = true;
+            }
+            else
+                e.CanExecute = false;
+            
+            e.Handled = true;
+        }
+
+        private void PrintTicketExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            App.Log.Debug("Erstelle Leihschein");
+
+            if (RentalData != null && RentalData.SelectedItem != null)
+            {
+                PrintDialog printDialog = new PrintDialog();
+                if (printDialog.ShowDialog() == true)
+                {
+                    FlowDocument flowDocument = new FlowDocument();
+                    flowDocument.PagePadding = new Thickness(100);
+
+                    Paragraph paragraph = new Paragraph();
+                    paragraph.Margin = new Thickness(0);
+                    paragraph.FontSize = 36;
+                    paragraph.Inlines.Add(new Run("Leihschein"));
+                    flowDocument.Blocks.Add(paragraph);
+
+
+                    // Tabelle erstellen
+                    Table table1 = new Table();
+
+                    // Tabelle zum Dokument hinzufuegen
+                    flowDocument.Blocks.Add(table1);
+
+                    // Spalten erstellen
+                    table1.Columns.Add(new TableColumn());
+                    table1.Columns.Add(new TableColumn());
+
+                    // Spaltengruppe erstellen und Zeilen hinzufuegen
+                    table1.RowGroups.Add(new TableRowGroup());
+                    table1.RowGroups[0].Rows.Add(new TableRow());
+                    table1.RowGroups[0].Rows.Add(new TableRow());
+                    table1.RowGroups[0].Rows.Add(new TableRow());
+                    table1.RowGroups[0].Rows.Add(new TableRow());
+                    table1.RowGroups[0].Rows.Add(new TableRow());
+
+                    // Alias fuer die aktuelle Zeile
+                    TableRow currentRow = table1.RowGroups[0].Rows[0];
+
+                    // Zellen fuer Buchtitel
+                    currentRow.Cells.Add(new TableCell(new Paragraph(new Run("Titel"))));
+                    currentRow.Cells.Add(new TableCell(new Paragraph(new Run((RentalData.SelectedItem as Rental).Item.Title))));
+
+                    // Zellen fuer Rueckgabedatum
+                    currentRow = table1.RowGroups[0].Rows[1];
+                    currentRow.Cells.Add(new TableCell(new Paragraph(new Run("Rückgabedatum"))));
+                    currentRow.Cells.Add(new TableCell(new Paragraph(new Run((RentalData.SelectedItem as Rental).EndAsString))));
+
+                    // Zellen fuer Kundenname
+                    currentRow = table1.RowGroups[0].Rows[2];
+                    currentRow.Cells.Add(new TableCell(new Paragraph(new Run("Nachname"))));
+                    currentRow.Cells.Add(new TableCell(new Paragraph(new Run((RentalData.SelectedItem as Rental).Taker.LastName))));
+                    currentRow = table1.RowGroups[0].Rows[3];
+                    currentRow.Cells.Add(new TableCell(new Paragraph(new Run("Vorname"))));
+                    currentRow.Cells.Add(new TableCell(new Paragraph(new Run((RentalData.SelectedItem as Rental).Taker.SurName))));
+
+                    // Zellen fuer Datum und Unterschrift
+                    currentRow = table1.RowGroups[0].Rows[4];
+                    currentRow.Cells.Add(new TableCell(new Paragraph(new Run("Datum"))));
+                    currentRow.Cells.Add(new TableCell(new Paragraph(new Run("Unterschrift"))));
+
+                    DocumentPaginator paginator = ((IDocumentPaginatorSource)flowDocument).DocumentPaginator;
+                    printDialog.PrintDocument(paginator, "Leihschein");
+                }
+            }
+            else
+            {
+                App.Log.Debug("Kein Daten gefunden");
+            }
+            e.Handled = true;
         }
 
         #endregion // Commands
