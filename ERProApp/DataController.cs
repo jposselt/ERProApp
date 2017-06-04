@@ -277,6 +277,8 @@ namespace ERProApp
 
                         // serialisierer starten.
                         serializer.Serialize(writer, Books.ToList(), ns);
+
+                        App.Log.Info("Bücher gespeichert");
                     }
                 }
                 catch (Exception e) // Um eventuelle Fehler zu vermeiden.
@@ -402,6 +404,8 @@ namespace ERProApp
 
                         // serialisierer starten.
                         serializer.Serialize(writer, Rentals.ToList(), ns);
+
+                        App.Log.Info("Ausleihen gespeichert");
                     }
                 }
                 catch (Exception e) // Um eventuelle Fehler zu vermeiden.
